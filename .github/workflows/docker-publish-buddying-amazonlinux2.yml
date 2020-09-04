@@ -1,6 +1,7 @@
 name: Publish Docker image for "buddying-amazonlinux2"
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    branches: [master]
 jobs:
   publish:
     name: Push Docker image to GitHub Container Registry
@@ -16,6 +17,6 @@ jobs:
           registry: ghcr.io
           repository: ${{ github.repository_owner }}/buddying-amazonlinux2
           tag_with_ref: true
-          dockerfile: {path}/buddying-amazonlinux2/Dockerfile
+          dockerfile: /buddying-amazonlinux2/Dockerfile
         env:
           DOCKER_BUILDKIT: 1
