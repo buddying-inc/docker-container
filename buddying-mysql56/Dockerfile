@@ -11,4 +11,4 @@ RUN apt-get update \
 ENV LC_ALL ja_JP.UTF-8
 
 # Settings
-COPY ./setup/my.cnf /etc/mysql/conf.d/
+COPY ${GITHUB_WORKSPACE}/buddying-mysql56/setup/my.cnf /etc/mysql/conf.d/
