@@ -1,4 +1,4 @@
-name: Publish Docker image for "buddying-amazonlinux2"
+name: publish "buddying-amazonlinux2"
 on:
   workflow_dispatch:
     branches: [master]
