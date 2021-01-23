@@ -1,0 +1,22 @@
+name: publish "buddying-centos75-apache-php80"
+on:
+  workflow_dispatch:
+    branches: [master]
+jobs:
+  publish:
+    name: Push Docker image to GitHub Container Registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Container Registry
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.CR_PAT }}
+          registry: ghcr.io
+          repository: ${{ github.repository_owner }}/buddying-php
+          tags: centos75-apache-php80
+          dockerfile: ${{ github.workspace }}/buddying-centos75-apache-php80/Dockerfile
+        env:
+          DOCKER_BUILDKIT: 1
