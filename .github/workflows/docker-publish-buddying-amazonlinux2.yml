@@ -1,4 +1,4 @@
-name: publish "buddying-amazonlinux2"
+name: amazonlinux2
 on:
   workflow_dispatch:
     branches: [master]

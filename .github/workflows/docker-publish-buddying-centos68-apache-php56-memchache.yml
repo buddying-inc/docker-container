@@ -1,4 +1,4 @@
-name: publish "buddying-centos68-apache-php56-memcache"
+name: centos68-apache-php56-memcache
 on:
   workflow_dispatch:
     branches: [master]

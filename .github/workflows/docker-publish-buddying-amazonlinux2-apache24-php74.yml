@@ -1,4 +1,4 @@
-name: publish "buddying-amazonlinux2-apache24-php74"
+name: amazonlinux2-apache24-php74
 on:
   workflow_dispatch:
     branches: [master]
