@@ -1,4 +1,4 @@
-name: publish "buddying-centos75"
+name: centos75
 on:
   workflow_dispatch:
     branches: [master]

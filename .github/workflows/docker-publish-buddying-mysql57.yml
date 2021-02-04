@@ -1,4 +1,4 @@
-name: publish "buddying-mysql57"
+name: mysql57
 on:
   workflow_dispatch:
     branches: [master]

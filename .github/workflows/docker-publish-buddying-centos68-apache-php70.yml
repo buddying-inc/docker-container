@@ -1,4 +1,4 @@
-name: publish "buddying-centos68-apache-php70"
+name: centos68-apache-php70
 on:
   workflow_dispatch:
     branches: [master]
