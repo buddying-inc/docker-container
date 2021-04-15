@@ -20,5 +20,6 @@ jobs:
         with:
           tags: ${{ github.repository_owner }}/buddying-php:centos75-apache-php80
           file: buddying-centos75-apache-php80/Dockerfile
+          push: true
         env:
           DOCKER_BUILDKIT: 1
