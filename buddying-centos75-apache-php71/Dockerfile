@@ -1,8 +1,12 @@
 FROM ghcr.io/buddying-inc/buddying-centos75:latest
 
+RUN yum update -y
+
+RUN yum install -y httpd \
+ && yum install -y postfix \
+ && yum install -y zip unzip
+
 RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
- && yum update -y \
- && yum install -y httpd \
  && yum install -y --enablerepo=remi-php71 \
         php \
         php-devel \
@@ -21,10 +25,9 @@ RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
         php-xml \
         php-xmlwriter \
         php-xsl \
-        php-zip \
- && yum install -y postfix \
- && yum install -y zip unzip \
- && rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
+        php-zip
+
+RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
 # Settings
@@ -45,6 +48,7 @@ RUN rm -rf /var/www/* \
  && chmod 700 /entrypoint.sh
 
 # Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Environment
