@@ -18,7 +18,7 @@ jobs:
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          tags: ${{ github.repository_owner }}/buddying-php:centos75-apache-php80
+          tags: ghcr.io/${{ github.repository_owner }}/buddying-php:centos75-apache-php80
           file: buddying-centos75-apache-php80/Dockerfile
           push: true
         env:
