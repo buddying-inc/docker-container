@@ -1,9 +1,16 @@
 FROM ghcr.io/buddying-inc/buddying-centos68:latest
 
-RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
- && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
- && yum update -y \
- && yum install -y httpd \
+RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\/mirrorlist.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo \
+ && sed -i -e "s/^#baseurl=http:\/\/mirror.centos.org/baseurl=http:\/\/vault.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo
+
+RUN yum update -y \
+ && rpm -ivh https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+RUN yum install -y httpd \
+ && yum install -y postfix \
+ && yum install -y zip unzip
+
+RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
  && yum install -y --enablerepo=remi-php56 \
         php \
         php-devel \
@@ -21,11 +28,15 @@ RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noar
         php-soap \
         php-xml \
         php-xmlwriter \
-        php-xsl \
- && yum install -y postfix \
- && yum install -y zip unzip \
- && yum install -y memcached memcache php56-php-pecl-memcache php56-php-pecl-memcached \
- && rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
+        php-xsl
+
+RUN yum install -y \
+        memcached \
+        memcache \
+        php56-php-pecl-memcache \
+        php56-php-pecl-memcached
+
+RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
 RUN cp -ap /opt/remi/php56/root/usr/lib64/php/modules/memcache.so /usr/lib64/php/modules/memcache.so
@@ -49,6 +60,7 @@ RUN rm -rf /var/www/* \
  && chmod 700 /entrypoint.sh
 
 # Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Environment
