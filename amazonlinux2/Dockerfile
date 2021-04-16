@@ -1,11 +1,8 @@
 FROM amazonlinux:2
 
 RUN yum update -y \
- && yum clean all \
- && wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
- && rpm -ivh epel-release-latest-7.noarch.rpm
+ && yum clean all
 
-# Packages
 RUN yum install -y \
     curl \
     git \
@@ -21,6 +18,9 @@ RUN yum install -y \
     zip \
     unzip \
     yum-utils
+
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+ && rpm -ivh epel-release-latest-7.noarch.rpm
 
 RUN yum clean all
 
