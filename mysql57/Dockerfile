@@ -1,4 +1,4 @@
-FROM mysql:5.6.35
+FROM mysql:5.7.33
 
 # Set debian default locale to ja_JP.UTF-8
 # ref. http://qiita.com/muff1225/items/48e0753e7b745ec3ecbd
@@ -11,4 +11,4 @@ RUN apt-get update \
 ENV LC_ALL ja_JP.UTF-8
 
 # Settings
-COPY ${GITHUB_WORKSPACE}/buddying-mysql56/setup/my.cnf /etc/mysql/conf.d/
+COPY ${GITHUB_WORKSPACE}/mysql57/setup/my.cnf /etc/mysql/conf.d/
