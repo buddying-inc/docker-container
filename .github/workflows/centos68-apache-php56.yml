@@ -1,5 +1,7 @@
 name: centos68-apache-php56
 on:
+  pull_request:
+    branches: [master]
   workflow_dispatch:
     branches: [master]
 jobs:

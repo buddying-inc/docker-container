@@ -1,5 +1,7 @@
 name: mysql56
 on:
+  pull_request:
+    branches: [master]
   workflow_dispatch:
     branches: [master]
 jobs:
