@@ -1,5 +1,7 @@
 name: amazonlinux2-apache24-php72
 on:
+  pull_request:
+    branches: [master]
   workflow_dispatch:
     branches: [master]
 jobs:
