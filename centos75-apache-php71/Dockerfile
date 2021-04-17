@@ -1,6 +1,4 @@
-FROM ghcr.io/buddying-inc/buddying-centos75:latest
-
-RUN yum update -y
+FROM ghcr.io/buddying-inc/centos75:latest
 
 RUN yum install -y httpd \
  && yum install -y postfix \
@@ -31,9 +29,9 @@ RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
 # Settings
-COPY ${GITHUB_WORKSPACE}/buddying-centos75-apache-php71/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos75-apache-php71/setup/php_development.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos75-apache-php71/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/httpd_development.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/php_development.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
