@@ -9,14 +9,17 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Push to GitHub Container Registry
-        uses: docker/build-push-action@v1
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.CR_PAT }}
-          registry: ghcr.io
-          repository: ${{ github.repository_owner }}/buddying-php
-          tags: buddying-centos68-apache-php56-memcache
-          dockerfile: ${{ github.workspace }}/buddying-centos68-apache-php56-memcache/Dockerfile
+      - name: Push to GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          tags: ghcr.io/${{ github.repository_owner }}/php:centos68-apache-php56-memcache
+          file: centos68-apache-php56-memcache/Dockerfile
+          push: true
         env:
           DOCKER_BUILDKIT: 1

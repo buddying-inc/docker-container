@@ -1,10 +1,4 @@
-FROM ghcr.io/buddying-inc/buddying-centos68:latest
-
-RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\/mirrorlist.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo \
- && sed -i -e "s/^#baseurl=http:\/\/mirror.centos.org/baseurl=http:\/\/vault.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo
-
-RUN yum update -y \
- && rpm -ivh https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/epel-release-6-8.noarch.rpm
+FROM ghcr.io/buddying-inc/centos68:latest
 
 RUN yum install -y httpd \
  && yum install -y postfix \
@@ -34,9 +28,9 @@ RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
 # Settings
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56/setup/php_development.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/httpd_development.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/php_development.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
