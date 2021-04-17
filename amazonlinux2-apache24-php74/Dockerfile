@@ -1,9 +1,8 @@
-FROM ghcr.io/buddying-inc/buddying-amazonlinux2:latest
+FROM ghcr.io/buddying-inc/amazonlinux2:latest
 
 RUN yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
  && yum-config-manager --enable remi-php74
 
-RUN yum update -y
 RUN yum install -y \
     httpd \
     mod_ssl
@@ -49,10 +48,10 @@ RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
 # Settings
-COPY ${GITHUB_WORKSPACE}/buddying-amazonlinux2-apache24-php74/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/buddying-amazonlinux2-apache24-php74/setup/ssl.conf /etc/httpd/conf.d/ssl.conf
-COPY ${GITHUB_WORKSPACE}/buddying-amazonlinux2-apache24-php74/setup/php_development.ini /etc/opt/remi/php74/php.d/
-COPY ${GITHUB_WORKSPACE}/buddying-amazonlinux2-apache24-php74/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php74/setup/httpd_development.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php74/setup/ssl.conf /etc/httpd/conf.d/ssl.conf
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php74/setup/php_development.ini /etc/opt/remi/php74/php.d/
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php74/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
