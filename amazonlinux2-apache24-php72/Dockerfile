@@ -66,6 +66,7 @@ RUN rm -rf /var/www/* \
  && chmod 700 /entrypoint.sh
 
 # Composer
+RUN curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer1 --1
 RUN curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer
 
 # Environment
