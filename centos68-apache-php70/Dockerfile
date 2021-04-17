@@ -1,17 +1,11 @@
-FROM ghcr.io/buddying-inc/buddying-centos68:latest
-
-RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\/mirrorlist.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo \
- && sed -i -e "s/^#baseurl=http:\/\/mirror.centos.org/baseurl=http:\/\/vault.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo
-
-RUN yum update -y \
- && rpm -ivh https://archives.fedoraproject.org/pub/archive/epel/6/x86_64/epel-release-6-8.noarch.rpm
+FROM ghcr.io/buddying-inc/centos68:latest
 
 RUN yum install -y httpd \
  && yum install -y postfix \
  && yum install -y zip unzip
 
 RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
- && yum install -y --enablerepo=remi-php56 \
+ && yum install -y --enablerepo=remi-php70 \
         php \
         php-devel \
         php-dom \
@@ -30,22 +24,13 @@ RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
         php-xmlwriter \
         php-xsl
 
-RUN yum install -y \
-        memcached \
-        memcache \
-        php56-php-pecl-memcache \
-        php56-php-pecl-memcached
-
 RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
  && yum clean all
 
-RUN cp -ap /opt/remi/php56/root/usr/lib64/php/modules/memcache.so /usr/lib64/php/modules/memcache.so
-#RUN cp -ap /opt/remi/php56/root/usr/lib64/php/modules/memcached.so /usr/lib64/php/modules/memcached.so
-
 # Settings
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56-memcache/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56-memcache/setup/php_development.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/buddying-centos68-apache-php56-memcache/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/httpd_development.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/php_development.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
