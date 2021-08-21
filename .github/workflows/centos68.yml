@@ -14,14 +14,15 @@ jobs:
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.CR_PAT }}
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          tags: docker.pkg.github.com/${{ github.repository_owner }}/centos68:latest
           file: centos68/Dockerfile
           push: true
+          tags: ghcr.io/${{ github.repository }}/centos68
+          tag_with_ref: true
         env:
           DOCKER_BUILDKIT: 1
