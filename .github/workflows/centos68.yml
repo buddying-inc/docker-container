@@ -21,6 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
+          repository: buddying-inc/centos68
           tag_with_ref: true
           file: centos68/Dockerfile
         env:
