@@ -1,7 +1,7 @@
 name: mysql57
 on:
-  pull_request:
-    branches: [master]
+#  pull_request:
+#    branches: [master]
   workflow_dispatch:
     branches: [master]
 jobs:
