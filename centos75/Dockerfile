@@ -1,4 +1,4 @@
-FROM centos:7.5
+FROM centos:7.5.1804
 
 # networking & language & local
 ENV LANG ja_JP.UTF-8
