@@ -12,9 +12,9 @@ RUN yum -y update \
            vim \
     && yum clean all
 
-# locale & timezome (require glibc-common)
-RUN localectl set-locale LANG=ja_JP.UTF-8 \
-    && timedatectl set-timezone Asia/Tokyo
-#ENV LANG ja_JP.UTF-8
-#ENV LANGUAGE ja_JP:ja
-#ENV LC_ALL ja_JP.UTF-8
+# locale & timezome (depends on "glibc-common")
+RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+ENV TZ="Asia/Tokyo" \
+    LANG="ja_JP.UTF-8" \
+    LANGUAGE="ja_JP:ja" \
+    LC_ALL="ja_JP.UTF-8"
