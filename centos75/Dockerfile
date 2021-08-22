@@ -17,5 +17,5 @@ RUN yum -y update \
 RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
 ENV TZ="Asia/Tokyo" \
     LANG="ja_JP.utf8" \
-    LANGUAGE="ja_JP:ja" \
-    LC_ALL="ja_JP.utf8"
+    LC_ALL="ja_JP.utf8" \
+    LANGUAGE="ja_JP:ja"
