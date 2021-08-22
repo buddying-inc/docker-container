@@ -9,7 +9,7 @@ jobs:
     name: Push Docker image to GitHub Container Registry
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: centos75
+      IMAGE_NAME: mysql56
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
