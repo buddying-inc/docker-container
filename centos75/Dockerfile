@@ -13,6 +13,7 @@ RUN yum -y update \
     && yum clean all
 
 # locale & timezome (depends on "glibc-common")
+# note: can't use timedatectl command in docker container.
 RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 ENV TZ="Asia/Tokyo" \
     LANG="ja_JP.UTF-8" \
