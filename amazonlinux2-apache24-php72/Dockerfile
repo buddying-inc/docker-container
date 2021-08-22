@@ -6,8 +6,7 @@ RUN yum install -y \
         mod_ssl \
         postfix \
     && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-    && yum-config-manager --enable remi-php72 \
-    && yum install -y \
+    && yum install -y --enablerepo=remi-php72 --disablerepo=amzn2-core \
            php72 \
            php72-php \
            php72-php-common \
