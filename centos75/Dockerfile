@@ -1,12 +1,7 @@
 FROM centos:7.5.1804
 
-# networking & language & local
-RUN echo 'NETWORKING=yes' > /etc/sysconfig/network \
-    && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
-    && timedatectl set-timezone Asia/Tokyo
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-#ENV LC_ALL ja_JP.UTF-8
+# networking
+RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
 RUN yum -y update \
@@ -16,3 +11,10 @@ RUN yum -y update \
            git \
            vim \
     && yum clean all
+
+# locale & timezome (require glibc-common)
+RUN localectl set-locale LANG=ja_JP.UTF-8 \
+    && timedatectl set-timezone Asia/Tokyo
+#ENV LANG ja_JP.UTF-8
+#ENV LANGUAGE ja_JP:ja
+#ENV LC_ALL ja_JP.UTF-8
