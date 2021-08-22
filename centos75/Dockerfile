@@ -1,20 +1,20 @@
-FROM centos:7.5.1804
+FROM centos:7.5
 
-# Packages
-RUN yum -y update && yum clean all
-RUN yum -y install epel-release
-RUN yum reinstall -y glibc-common
-RUN yum install -y git vim
-RUN yum clean all
-
-# Networking
-RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
-
-# Local
-RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+# networking & language & local
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
 #ENV LC_ALL ja_JP.UTF-8
-RUN unlink /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Japan /etc/localtime
-RUN echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
+RUN echo 'NETWORKING=yes' > /etc/sysconfig/network \
+    && localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
+    && unlink /etc/localtime \
+    && ln -s /usr/share/zoneinfo/Japan /etc/localtime \
+    && echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock
+
+# packages
+RUN yum -y update \
+    && yum install -y epel-release \
+    && yum reinstall -y glibc-common \
+    && yum install -y \
+           git \
+           vim \
+    && yum clean all
