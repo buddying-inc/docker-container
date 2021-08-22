@@ -1,10 +1,10 @@
 FROM amazonlinux:2
 
 # local
+RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 \
+    && timedatectl set-timezone Asia/Tokyo
 ENV LANG ja_JP.utf8
 ENV LC_ALL ja_JP.utf8
-RUN unlink /etc/localtime \
-    && ln -s /usr/share/zoneinfo/Japan /etc/localtime
 
 # packages
 RUN yum update -y \
