@@ -39,11 +39,10 @@ RUN yum install -y \
            php74-php-zlib \
            php74-php-pecl-memcached \
            php74-php-pecl-mongodb \
+    && yum clean all \
     && ln -s /usr/bin/php74 /usr/bin/php \
-    && yum clean all
-
-RUN curl -sS https://getcomposer.org/installer | php74 -- --install-dir=/usr/local/bin --filename=composer1 --1
-RUN curl -sS https://getcomposer.org/installer | php74 -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sS https://getcomposer.org/installer | php74 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php74 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php74/setup/httpd_development.conf /etc/httpd/conf.d/
