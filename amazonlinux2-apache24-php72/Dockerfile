@@ -39,11 +39,10 @@ RUN yum install -y \
            php72-php-zlib \
            php72-php-pecl-memcached \
            php72-php-pecl-mongodb \
+    && yum clean all \
     && ln -s /usr/bin/php72 /usr/bin/php \
-    && yum clean all
-
-RUN curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer1 --1
-RUN curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/httpd_development.conf /etc/httpd/conf.d/
