@@ -1,9 +1,7 @@
 FROM centos:6.8
 
-# networking & timezone
-RUN echo 'NETWORKING=yes' > /etc/sysconfig/network \
-    && echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock \
-    && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+# networking
+RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
 RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\/mirrorlist.centos.org/g" /etc/yum.repos.d/CentOS-Base.repo \
@@ -16,3 +14,10 @@ RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\
            vim \
            zsh \
     && yum clean all
+
+# locale & timezome
+RUN echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock \
+    && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+ENV LANG="ja_JP.utf8" \
+    LC_ALL="ja_JP.utf8" \
+    LANGUAGE="ja_JP:ja"
