@@ -38,7 +38,7 @@ RUN yum install -y \
            php80-php-zip \
            php80-php-zlib \
            php80-php-pecl-memcached \
-    && yum clean all
+    && yum clean all \
     && ln -s /usr/bin/php80 /usr/bin/php \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
