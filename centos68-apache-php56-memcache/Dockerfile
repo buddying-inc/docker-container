@@ -35,8 +35,8 @@ RUN yum install -y \
     && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
-COPY ${GITHUB_WORKSPACE}/centos68-apache-php56-memcache/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/centos68-apache-php56-memcache/setup/php_development.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php56-memcache/setup/httpd_dev.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php56-memcache/setup/php_dev.ini /opt/remi/php56/root/etc/php.d/
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php56-memcache/setup/entrypoint.sh /
 
 # directory, permission, ...
