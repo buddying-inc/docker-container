@@ -1,38 +1,40 @@
 FROM ghcr.io/buddying-inc/centos68:latest
 
-RUN yum install -y httpd \
- && yum install -y postfix \
- && yum install -y zip unzip
+# packages
+RUN yum install -y \
+        httpd \
+        postfix \
+        zip \
+        unzip \
+    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
+    && yum install -y --enablerepo=remi-php56 \
+           php \
+           php-devel \
+           php-dom \
+           php-gd \
+           php-intl \
+           php-mbstring \
+           php-mcrypt \
+           php-mysqlnd \
+           php-pdo \
+           php-pecl-xdebug \
+           php-pecl-apcu \
+           php-posix \
+           php-simplexml \
+           php-soap \
+           php-xml \
+           php-xmlwriter \
+           php-xsl \
+    && yum clean all \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
- && yum install -y --enablerepo=remi-php56 \
-        php \
-        php-devel \
-        php-dom \
-        php-gd \
-        php-intl \
-        php-mbstring \
-        php-mcrypt \
-        php-mysqlnd \
-        php-pdo \
-        php-pecl-xdebug \
-        php-pecl-apcu \
-        php-posix \
-        php-simplexml \
-        php-soap \
-        php-xml \
-        php-xmlwriter \
-        php-xsl
-
-RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
- && yum clean all
-
-# Settings
+# copy setting files
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/httpd_development.conf /etc/httpd/conf.d/
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/php_development.ini /etc/php.d/
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/entrypoint.sh /
 
-# Directory, permission, ... 
+# directory, permission, ...
 RUN rm -rf /var/www/* \
  && mkdir /var/www/html \
  && mkdir /var/log/php \
@@ -44,15 +46,8 @@ RUN rm -rf /var/www/* \
  && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
  && chmod 700 /entrypoint.sh
 
-# Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Environment
-ENV HOME=/root LANG=ja_JP.utf-8
+# env, port
+ENV HOME=/root
 WORKDIR /var/www
-
-# Listen
 EXPOSE 80
-
 ENTRYPOINT /entrypoint.sh
