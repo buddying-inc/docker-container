@@ -8,23 +8,23 @@ RUN yum install -y \
         unzip \
     && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
     && yum install -y --enablerepo=remi-php56 \
-           php \
-           php-devel \
-           php-dom \
-           php-gd \
-           php-intl \
-           php-mbstring \
-           php-mcrypt \
-           php-mysqlnd \
-           php-pdo \
-           php-pecl-xdebug \
-           php-pecl-apcu \
-           php-posix \
-           php-simplexml \
-           php-soap \
-           php-xml \
-           php-xmlwriter \
-           php-xsl \
+           php56-php \
+           php56-php-devel \
+           php56-php-dom \
+           php56-php-gd \
+           php56-php-intl \
+           php56-php-mbstring \
+           php56-php-mcrypt \
+           php56-php-mysqlnd \
+           php56-php-pdo \
+           php56-php-pecl-xdebug \
+           php56-php-pecl-apcu \
+           php56-php-posix \
+           php56-php-simplexml \
+           php56-php-soap \
+           php56-php-xml \
+           php56-php-xmlwriter \
+           php56-php-xsl \
     && yum clean all \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
