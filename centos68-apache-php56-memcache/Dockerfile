@@ -31,7 +31,6 @@ RUN yum install -y \
            php56-php-pecl-memcached \
     && yum clean all \
     && ln -s /usr/bin/php56 /usr/bin/php \
-    && cp -ap /opt/remi/php56/root/usr/lib64/php/modules/memcache.so /usr/lib64/php/modules/memcache.so \
     && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
     && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer
 
