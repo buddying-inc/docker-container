@@ -1,4 +1,4 @@
-FROM ghcr.io/buddying-inc/centos75:latest
+FROM ghcr.io/buddying-inc/centos:75
 
 # packages
 RUN yum install -y \
