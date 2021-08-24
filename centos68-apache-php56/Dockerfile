@@ -26,8 +26,9 @@ RUN yum install -y \
            php56-php-xmlwriter \
            php56-php-xsl \
     && yum clean all \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && ln -s /usr/bin/php56 /usr/bin/php \
+    && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php56/setup/httpd_development.conf /etc/httpd/conf.d/
