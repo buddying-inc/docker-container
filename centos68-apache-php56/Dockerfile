@@ -40,7 +40,7 @@ RUN rm -rf /var/www/* \
  && mkdir /var/www/html \
  && mkdir /var/log/php \
  && chmod 777 -R /var/log/php \
- && chmod 777 -R /var/lib/php/session \
+ && chmod 777 -R /var/opt/remi/php56/lib/php/session \
  && usermod -u 1000 apache \
  && groupmod -g 1000 apache \
  && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
