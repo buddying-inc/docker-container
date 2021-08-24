@@ -32,7 +32,7 @@ RUN yum install -y \
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/httpd_dev.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/php_dev.ini /opt/remi/php70/root/etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/php_dev.ini /etc/opt/remi/php70/php.d/
 COPY ${GITHUB_WORKSPACE}/centos68-apache-php70/setup/entrypoint.sh /
 
 # directory, permission, ...
