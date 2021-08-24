@@ -8,6 +8,8 @@ jobs:
   publish:
     name: Push Docker image to GitHub Container Registry
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: webserver-centos75
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -20,7 +22,7 @@ jobs:
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          tags: ghcr.io/${{ github.repository_owner }}/php:centos75-apache-php71
+          tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:apache-php71
           file: centos75-apache-php71/Dockerfile
           push: true
         env:

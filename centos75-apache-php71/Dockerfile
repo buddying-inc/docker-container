@@ -1,59 +1,55 @@
-FROM ghcr.io/buddying-inc/centos75:latest
+FROM ghcr.io/buddying-inc/centos:75
 
-RUN yum install -y httpd \
- && yum install -y postfix \
- && yum install -y zip unzip
+# packages
+RUN yum install -y \
+        httpd \
+        postfix \
+        zip \
+        unzip \
+    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+    && yum install -y --enablerepo=remi-php71 \
+           php71-php \
+           php71-php-devel \
+           php71-php-dom \
+           php71-php-gd \
+           php71-php-intl \
+           php71-php-mbstring \
+           php71-php-mcrypt \
+           php71-php-mysqlnd \
+           php71-php-pdo \
+           php71-php-pecl-xdebug \
+           php71-php-pecl-apcu \
+           php71-php-posix \
+           php71-php-simplexml \
+           php71-php-soap \
+           php71-php-xml \
+           php71-php-xmlwriter \
+           php71-php-xsl \
+           php71-php-zip \
+    && yum clean all \
+    && ln -s /usr/bin/php71 /usr/bin/php \
+    && curl -sS https://getcomposer.org/installer | php71 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php71 -- --install-dir=/usr/local/bin --filename=composer
 
-RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
- && yum install -y --enablerepo=remi-php71 \
-        php \
-        php-devel \
-        php-dom \
-        php-gd \
-        php-intl \
-        php-mbstring \
-        php-mcrypt \
-        php-mysqlnd \
-        php-pdo \
-        php-pecl-xdebug \
-        php-pecl-apcu \
-        php-posix \
-        php-simplexml \
-        php-soap \
-        php-xml \
-        php-xmlwriter \
-        php-xsl \
-        php-zip
-
-RUN rm -rf /var/tmp/* /var/lib/yum/* /var/cache/yum/* \
- && yum clean all
-
-# Settings
+# copy setting files
 COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/httpd_development.conf /etc/httpd/conf.d/
 COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/php_development.ini /etc/php.d/
 COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/entrypoint.sh /
 
-# Directory, permission, ... 
+# directory, permission, ...
 RUN rm -rf /var/www/* \
  && mkdir /var/www/html \
  && mkdir /var/log/php \
  && chmod 777 -R /var/log/php \
- && chmod 777 -R /var/lib/php/session \
+ && chmod 777 -R /var/opt/remi/php71/lib/php/session \
  && usermod -u 1000 apache \
  && groupmod -g 1000 apache \
  && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
  && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
  && chmod 700 /entrypoint.sh
 
-# Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Environment
-ENV HOME=/root LANG=ja_JP.utf-8
+# env, port
+ENV HOME=/root
 WORKDIR /var/www
-
-# Listen
 EXPOSE 80
-
 ENTRYPOINT /entrypoint.sh
