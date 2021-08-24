@@ -1,4 +1,4 @@
-FROM ghcr.io/buddying-inc/amazonlinux2:latest
+FROM ghcr.io/buddying-inc/amazonlinux:2
 
 # packages
 RUN yum install -y \
