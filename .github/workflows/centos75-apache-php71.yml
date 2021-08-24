@@ -22,8 +22,8 @@ jobs:
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
+          push: true
           tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:apache-php71
           file: centos75-apache-php71/Dockerfile
-          push: true
         env:
           DOCKER_BUILDKIT: 1
