@@ -7,5 +7,5 @@ if [ "$xdebug" != 'on' ] && [ -e /etc/opt/remi/php70/php.d/15-xdebug.ini ]; then
   mv /etc/opt/remi/php70/php.d/15-xdebug.ini /etc/opt/remi/php70/php.d/15-xdebug.ini.disable
 fi
 
-service postfix start
+/etc/init.d/postfix start
 /usr/sbin/httpd -DFOREGROUND
