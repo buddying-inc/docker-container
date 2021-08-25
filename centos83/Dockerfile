@@ -9,10 +9,10 @@ RUN dnf -y update \
     && dnf install -y \
            git \
            vim \
-           langpack-ja \
+           glibc-langpack-ja \
     && dnf clean all
 
-# locale & timezome (depends on "langpack-ja")
+# locale & timezome (depends on "glibc-langpack-ja")
 # note: can't use timedatectl command in docker container.
 RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
 ENV TZ="Asia/Tokyo" \
