@@ -1,17 +1,12 @@
 #!/bin/bash
+set -e
 
 xdebug=${PHP_XDEBUG:-off}
-xdebug=`echo $xdebug | tr '[A-Z]' '[a-z]'`
+xdebug=$(echo "$xdebug" | tr "[:upper:]" "[:lower:]")
 
-cd /etc/php.d
-if [ $xdebug != 'on' -a -e 15-xdebug.ini ]; then
-    mv 15-xdebug.ini 15-xdebug.ini.disable
+if [ "$xdebug" != 'on' ] && [ -e /etc/opt/remi/php74/php.d/15-xdebug.ini ]; then
+  mv /etc/opt/remi/php74/php.d/15-xdebug.ini /etc/opt/remi/php74/php.d/15-xdebug.ini.disable
 fi
 
 /usr/sbin/postfix start
-/usr/sbin/httpd
-
-while true
-do
-  sleep 10000
-done
+/usr/sbin/httpd -DFOREGROUND

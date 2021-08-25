@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 xdebug=${PHP_XDEBUG:-off}
 xdebug=$(echo "$xdebug" | tr "[:upper:]" "[:lower:]")

@@ -40,12 +40,12 @@ RUN yum install -y \
            php80-php-pecl-memcached \
     && yum clean all \
     && ln -s /usr/bin/php80 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
+    && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer
 
 # copu setting files
-COPY ${GITHUB_WORKSPACE}/centos75-apache-php80/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/centos75-apache-php80/setup/php_development.ini /etc/opt/remi/php80/php.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php80/setup/php_dev.ini /etc/opt/remi/php80/php.d/
 COPY ${GITHUB_WORKSPACE}/centos75-apache-php80/setup/entrypoint.sh /
 
 # Directory, permission, ... 
