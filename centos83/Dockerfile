@@ -9,6 +9,7 @@ RUN dnf -y update \
     && dnf install -y \
            git \
            vim \
+           glibc-locale-source \
            glibc-langpack-ja \
     && dnf clean all
 
