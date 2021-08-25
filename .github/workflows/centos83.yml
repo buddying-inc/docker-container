@@ -1,4 +1,4 @@
-name: centos75
+name: centos83
 on:
 #  pull_request:
 #    branches: [master]
@@ -23,7 +23,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:75
-          file: centos75/Dockerfile
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:83
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+          file: centos83/Dockerfile
         env:
           DOCKER_BUILDKIT: 1
