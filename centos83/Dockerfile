@@ -4,15 +4,15 @@ FROM centos:8.3.2011
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
-RUN yum -y update \
-    && yum install -y epel-release \
-    && yum reinstall -y glibc-common \
-    && yum install -y \
+RUN dnf -y update \
+    && dnf install -y epel-release \
+    && dnf install -y \
            git \
            vim \
-    && yum clean all
+           langpack-ja \
+    && dnf clean all
 
-# locale & timezome (depends on "glibc-common")
+# locale & timezome (depends on "langpack-ja")
 # note: can't use timedatectl command in docker container.
 RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
 ENV TZ="Asia/Tokyo" \
