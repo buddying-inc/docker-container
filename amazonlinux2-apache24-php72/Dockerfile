@@ -45,9 +45,9 @@ RUN yum install -y \
     && curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
-COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/httpd_development.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/httpd_dev.conf /etc/httpd/conf.d/
 COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/ssl.conf /etc/httpd/conf.d/ssl.conf
-COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/php_development.ini /etc/opt/remi/php72/php.d/
+COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/php_dev.ini /etc/opt/remi/php72/php.d/
 COPY ${GITHUB_WORKSPACE}/amazonlinux2-apache24-php72/setup/entrypoint.sh /
 
 # directory, permission, ...
