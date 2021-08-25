@@ -32,8 +32,8 @@ RUN yum install -y \
     && curl -sS https://getcomposer.org/installer | php71 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
-COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/httpd_development.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/php_development.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/httpd_dev.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/php_dev.ini /etc/opt/remi/php71/php.d/
 COPY ${GITHUB_WORKSPACE}/centos75-apache-php71/setup/entrypoint.sh /
 
 # directory, permission, ...
