@@ -1,4 +1,4 @@
-name: centos83
+name: centos-83
 on:
 #  pull_request:
 #    branches: [master]

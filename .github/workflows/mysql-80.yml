@@ -1,4 +1,4 @@
-name: mysql80
+name: mysql-80
 on:
 #  pull_request:
 #    branches: [master]

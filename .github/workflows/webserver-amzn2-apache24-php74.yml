@@ -1,4 +1,4 @@
-name: amazonlinux2-apache24-php74
+name: webserver-amzn2-apache24-php74
 on:
 #  pull_request:
 #    branches: [master]

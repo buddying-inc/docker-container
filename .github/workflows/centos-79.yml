@@ -1,4 +1,4 @@
-name: centos79
+name: centos-79
 on:
 #  pull_request:
 #    branches: [master]

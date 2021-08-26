@@ -1,4 +1,4 @@
-name: mysql56
+name: mysql-56
 on:
 #  pull_request:
 #    branches: [master]

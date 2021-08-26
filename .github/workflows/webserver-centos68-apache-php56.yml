@@ -1,4 +1,4 @@
-name: centos68-apache-php56
+name: webserver-centos68-apache-php56
 on:
 #  pull_request:
 #    branches: [master]
