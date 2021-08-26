@@ -7,7 +7,7 @@ RUN dnf install -y \
         zip \
         unzip \
     && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.rpm \
-    && dnf install -y --enablerepo=remi-php74 \
+    && dnf install -y --enablerepo=remi \
            php74 \
            php74-php \
            php74-php-common \

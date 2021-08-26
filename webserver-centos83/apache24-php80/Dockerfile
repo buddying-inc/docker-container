@@ -7,7 +7,7 @@ RUN dnf install -y \
         zip \
         unzip \
     && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.rpm \
-    && dnf install -y --enablerepo=remi-php80 \
+    && dnf install -y --enablerepo=remi \
            php80 \
            php80-php \
            php80-php-common \
