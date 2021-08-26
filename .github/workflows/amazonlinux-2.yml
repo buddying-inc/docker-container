@@ -1,4 +1,4 @@
-name: amazonlinux2
+name: amazonlinux-2
 on:
 #  pull_request:
 #    branches: [master]

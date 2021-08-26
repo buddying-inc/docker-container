@@ -1,4 +1,4 @@
-name: centos75-apache-php74
+name: webserver-centos75-apache-php74
 on:
 #  pull_request:
 #    branches: [master]
