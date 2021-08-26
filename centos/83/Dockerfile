@@ -1,4 +1,4 @@
-FROM centos:8.3.2011
+FROM centos:centos8.3.2011
 
 # networking
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network

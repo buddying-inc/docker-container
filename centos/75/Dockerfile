@@ -1,4 +1,4 @@
-FROM centos:7.5.1804
+FROM centos:centos7.5.1804
 
 # networking
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
