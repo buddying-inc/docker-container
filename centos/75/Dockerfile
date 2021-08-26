@@ -4,7 +4,7 @@ FROM centos:centos7.5.1804
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
-RUN yum -y update \
+RUN yum update -y --exclude=kernel* --exclude=centos* \
     && yum install -y epel-release \
     && yum reinstall -y glibc-common \
     && yum install -y \

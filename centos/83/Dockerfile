@@ -4,7 +4,7 @@ FROM centos:centos8.3.2011
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
-RUN dnf -y update \
+RUN dnf update -y --exclude=kernel* --exclude=centos* \
     && dnf install -y epel-release \
     && dnf install -y \
            git \
