@@ -1,13 +1,13 @@
 FROM ghcr.io/buddying-inc/centos:83
 
 # packages
-RUN yum install -y \
+RUN dnf install -y \
         httpd \
         postfix \
         zip \
         unzip \
-    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-8.rpm \
-    && yum install -y --enablerepo=remi-php80 \
+    && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.rpm \
+    && dnf install -y --enablerepo=remi-php80 \
            php80 \
            php80-php \
            php80-php-common \
@@ -38,7 +38,7 @@ RUN yum install -y \
            php80-php-zip \
            php80-php-zlib \
            php80-php-pecl-memcached \
-    && yum clean all \
+    && dnf clean all \
     && ln -s /usr/bin/php80 /usr/bin/php \
     && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
     && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer

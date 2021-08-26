@@ -6,7 +6,7 @@ RUN yum install -y \
         postfix \
         zip \
         unzip \
-    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
     && yum install -y --enablerepo=remi-php71 \
            php71-php \
            php71-php-devel \
