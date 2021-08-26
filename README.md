@@ -3,7 +3,7 @@
 ## ディレクトリ構成
 
 **GitHub actions**  
-`.github/workflows/DOCKER_IMAGE_NAME.yml`  
+`.github/workflows/PACKAGE_NAME--TAG_NAME.yml`  
 
 **Dockerifle**  
-`DOCKER_IMAGE_NAME/Dockerfile`  
+`PACKAGE_NAME/TAG_NAME/Dockerfile`  
