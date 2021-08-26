@@ -39,7 +39,6 @@ RUN dnf install -y \
            php80-php-zlib \
            php80-php-pecl-memcached \
     && dnf clean all \
-    && ln -s /usr/bin/php80 /usr/bin/php \
     && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
     && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer
 
