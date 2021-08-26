@@ -44,9 +44,9 @@ RUN yum install -y \
     && curl -sS https://getcomposer.org/installer | php74 -- --install-dir=/usr/local/bin --filename=composer
 
 # copy setting files
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php74/setup/httpd_dev.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php74/setup/php_dev.ini /etc/opt/remi/php74/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php74/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php74/setup/httpd_dev.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php74/setup/php_dev.ini /etc/opt/remi/php74/php.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php74/setup/entrypoint.sh /
 
 # directory, permission, ...
 RUN rm -rf /var/www/* \

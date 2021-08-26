@@ -44,9 +44,9 @@ RUN yum install -y \
     && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer
 
 # copu setting files
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php80/setup/php_dev.ini /etc/opt/remi/php80/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache-php80/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php80/setup/php_dev.ini /etc/opt/remi/php80/php.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php80/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
