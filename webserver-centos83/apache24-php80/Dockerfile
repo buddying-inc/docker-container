@@ -1,5 +1,8 @@
 FROM ghcr.io/buddying-inc/centos:83
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN dnf install -y \
         httpd \
@@ -40,9 +43,6 @@ RUN dnf install -y \
            php-zlib \
            php-pecl-memcached \
     && dnf clean all
-
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
 # copu setting files
 COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
