@@ -1,12 +1,15 @@
 FROM ghcr.io/buddying-inc/centos:83
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN dnf install -y \
         httpd \
         postfix \
         zip \
         unzip \
-    && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.rpm \
+    && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.4.rpm \
     && dnf module reset -y php \
     && dnf module install -y php:remi-7.4 \
     && dnf install -y --enablerepo=remi \
@@ -39,9 +42,7 @@ RUN dnf install -y \
            php-zip \
            php-zlib \
            php-pecl-memcached \
-    && dnf clean all \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && dnf clean all
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php74/setup/httpd_dev.conf /etc/httpd/conf.d/
