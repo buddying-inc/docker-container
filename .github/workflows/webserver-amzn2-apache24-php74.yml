@@ -26,8 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ env.PACKAGE_NAME }}:${{ env.VERSION_NAME }}
+          tags: ghcr.io/${{ github.repository_owner }}/${{ env.PACKAGE_NAME }}:${{ env.VERSION_NAME }}
           file: ${{ env.PACKAGE_NAME }}/${{ env.VERSION_NAME }}/Dockerfile
         env:
           DOCKER_BUILDKIT: 1
