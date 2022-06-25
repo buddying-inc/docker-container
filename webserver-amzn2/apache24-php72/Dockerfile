@@ -1,5 +1,8 @@
 FROM ghcr.io/buddying-inc/amazonlinux:2
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN yum install -y \
         httpd \
@@ -40,9 +43,7 @@ RUN yum install -y \
            php72-php-pecl-memcached \
            php72-php-pecl-mongodb \
     && yum clean all \
-    && ln -s /usr/bin/php72 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php72 -- --install-dir=/usr/local/bin --filename=composer
+    && ln -s /usr/bin/php72 /usr/bin/php
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-amzn2/apache24-php72/setup/httpd_dev.conf /etc/httpd/conf.d/
