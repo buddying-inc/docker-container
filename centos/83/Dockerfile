@@ -4,7 +4,9 @@ FROM centos:centos8.3.2011
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
-RUN dnf update -y --exclude=kernel* --exclude=centos* \
+RUN sed -i -e "s/^mirrorlist/#mirrorlist/g" /etc/yum.repos.d/CentOS-*.repo \
+    && sed -i -e "s/^#baseurl=http:\/\/mirror/baseurl=http:\/\/vault/g" /etc/yum.repos.d/CentOS-*.repo \
+    && dnf update -y --exclude=kernel* --exclude=centos* \
     && dnf install -y epel-release \
     && dnf install -y \
            git \
