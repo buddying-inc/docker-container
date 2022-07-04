@@ -45,9 +45,9 @@ RUN dnf install -y \
     && dnf clean all
 
 # copu setting files
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/setup/httpd_dev.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/setup/php_dev.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/setup/entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/files/php/99-custom.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/files/docker-entrypoint.sh /
 
 # directory, permission, ...
 RUN mkdir -p /run/php-fpm \
@@ -59,10 +59,10 @@ RUN mkdir -p /run/php-fpm \
  && groupmod -g 1000 apache \
  && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
  && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
- && chmod 700 /entrypoint.sh
+ && chmod 700 /docker-entrypoint.sh
 
 # env, port
 ENV HOME=/root
 WORKDIR /var/www
 EXPOSE 80
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT /docker-entrypoint.sh
