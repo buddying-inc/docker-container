@@ -50,9 +50,9 @@ COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/setup/php_dev.ini /et
 COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php81/setup/entrypoint.sh /
 
 # directory, permission, ...
-RUN rm -rf /var/www/* \
- && mkdir /var/www/html \
- && mkdir /var/log/php \
+RUN mkdir -p /run/php-fpm \
+ && mkdir -p /var/log/php \
+ && chmod 777 -R /run/php-fpm \
  && chmod 777 -R /var/log/php \
  && chmod 777 -R /var/lib/php/session \
  && usermod -u 1000 apache \
