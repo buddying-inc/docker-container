@@ -9,7 +9,7 @@ RUN dnf install -y \
         postfix \
         zip \
         unzip \
-    && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.7.rpm \
+    && dnf install -y http://rpms.famillecollet.com/enterprise/remi-release-8.6.rpm \
     && dnf module reset -y php \
     && dnf module install -y php:remi-8.2 \
     && dnf install -y --enablerepo=remi \
