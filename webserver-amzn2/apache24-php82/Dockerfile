@@ -8,7 +8,7 @@ RUN yum install -y \
         httpd \
         mod_ssl \
         postfix \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-8.5.rpm \
+    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
     && yum install -y libzstd --enablerepo=epel --disablerepo=amzn2-core \
     && yum install -y --enablerepo=epel,remi,remi-php82 \
            php82 \
