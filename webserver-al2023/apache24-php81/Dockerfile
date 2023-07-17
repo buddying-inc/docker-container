@@ -49,9 +49,9 @@ RUN echo -e "extension=apcu.so\n" >> /etc/php.ini \
  && echo -e "extension=zip.so\n" >> /etc/php.ini
 
 ## copy setting files
-COPY ${GITHUB_WORKSPACE}/apache24-php81/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/apache24-php81/apache24-php81/files/php/99-custom.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/apache24-php81/apache24-php81/files/docker-entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/php/99-custom.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/docker-entrypoint.sh /
 
 ## directory, permission, ...
 RUN mkdir -p /run/php-fpm \
