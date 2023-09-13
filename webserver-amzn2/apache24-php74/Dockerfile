@@ -8,9 +8,9 @@ RUN yum install -y \
         httpd \
         mod_ssl \
         postfix \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+    && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum install -y libzstd --enablerepo=epel --disablerepo=amzn2-core \
-    && yum install -y --enablerepo=epel,remi,remi-php74 \
+    && yum install -y --disablerepo=remi-safe --enablerepo=epel,remi,remi-php74 \
            php74 \
            php74-php \
            php74-php-common \
