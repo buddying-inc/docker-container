@@ -10,7 +10,7 @@ RUN yum install -y \
         postfix \
     && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
     && yum install -y libzstd --enablerepo=epel --disablerepo=amzn2-core \
-    && yum install -y --enablerepo=epel,remi,remi-php81 \
+    && yum install -y --disablerepo=remi-safe --enablerepo=epel,remi,remi-php81 \
            php81 \
            php81-php \
            php81-php-common \
