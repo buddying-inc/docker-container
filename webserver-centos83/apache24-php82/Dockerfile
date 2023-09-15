@@ -12,7 +12,7 @@ RUN dnf install -y \
     && dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.4.rpm \
     && dnf module reset -y php \
     && dnf module install -y php:remi-8.2 \
-    && dnf install -y --disablerepo=remi-safe --enablerepo=remi \
+    && dnf install -y \
            php \
            php-common \
            php-ctype \
