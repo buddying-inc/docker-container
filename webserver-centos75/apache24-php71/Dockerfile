@@ -1,13 +1,17 @@
 FROM ghcr.io/buddying-inc/centos:75
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN yum install -y \
         httpd \
         postfix \
         zip \
         unzip \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-    && yum install -y --enablerepo=remi-php71 \
+    && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
+    && yum install -y \
+           php71 \
            php71-php \
            php71-php-devel \
            php71-php-dom \
@@ -27,9 +31,7 @@ RUN yum install -y \
            php71-php-xsl \
            php71-php-zip \
     && yum clean all \
-    && ln -s /usr/bin/php71 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php71 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php71 -- --install-dir=/usr/local/bin --filename=composer
+    && ln -s /usr/bin/php71 /usr/bin/php
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-centos75/apache24-php71/setup/httpd_dev.conf /etc/httpd/conf.d/
