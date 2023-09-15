@@ -1,5 +1,8 @@
 FROM ghcr.io/buddying-inc/centos:79
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN yum install -y \
         httpd \
@@ -39,9 +42,7 @@ RUN yum install -y \
            php80-php-zlib \
            php80-php-pecl-memcached \
     && yum clean all \
-    && ln -s /usr/bin/php80 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php80 -- --install-dir=/usr/local/bin --filename=composer
+    && ln -s /usr/bin/php80 /usr/bin/php
 
 # copu setting files
 COPY ${GITHUB_WORKSPACE}/webserver-centos79/apache24-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
