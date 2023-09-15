@@ -7,8 +7,7 @@ RUN yum install -y \
         zip \
         unzip \
     && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
-    && yum list | grep php \
-    && yum install -y --disablerepo=remi-safe --enablerepo=remi-php80 \
+    && yum install -y --enablerepo=remi-php80 \
            php80 \
            php80-php \
            php80-php-common \
