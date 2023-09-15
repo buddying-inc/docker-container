@@ -11,8 +11,8 @@ RUN yum install -y \
         unzip \
         memcached \
         memcache \
-    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
-    && yum install -y --enablerepo=remi-php56 \
+    && rpm -ivh https://rpms.remirepo.net/enterprise/remi-release-6.rpm \
+    && yum install -y \
            php56-php \
            php56-php-devel \
            php56-php-dom \

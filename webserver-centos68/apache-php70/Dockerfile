@@ -9,8 +9,8 @@ RUN yum install -y \
         postfix \
         zip \
         unzip \
-    && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
-    && yum install -y --enablerepo=remi-php70 \
+    && rpm -ivh https://rpms.remirepo.net/enterprise/remi-release-6.rpm \
+    && yum install -y \
            php70-php \
            php70-php-devel \
            php70-php-dom \
