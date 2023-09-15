@@ -1,5 +1,8 @@
 FROM ghcr.io/buddying-inc/centos:68
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
+
 # packages
 RUN yum install -y \
         httpd \
@@ -30,9 +33,7 @@ RUN yum install -y \
            php56-php-pecl-memcache \
            php56-php-pecl-memcached \
     && yum clean all \
-    && ln -s /usr/bin/php56 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer1 --1 \
-    && curl -sS https://getcomposer.org/installer | php56 -- --install-dir=/usr/local/bin --filename=composer
+    && ln -s /usr/bin/php56 /usr/bin/php
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-centos68/apache-php56-memcache/setup/httpd_dev.conf /etc/httpd/conf.d/
