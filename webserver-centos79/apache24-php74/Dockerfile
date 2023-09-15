@@ -6,8 +6,8 @@ RUN yum install -y \
         postfix \
         zip \
         unzip \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-    && yum install -y --enablerepo=remi-php74 \
+    && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
+    && yum install -y \
            php74 \
            php74-php \
            php74-php-common \
