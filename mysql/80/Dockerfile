@@ -1,15 +1,11 @@
-FROM mysql:8.0-debian
+FROM mysql:8.0
 
 # Set debian default locale to ja_JP.UTF-8
 # ref. http://qiita.com/muff1225/items/48e0753e7b745ec3ecbd
 
-RUN apt-get update \
-    && apt-get install -y locales \
-    && apt-get install language-pack-ja \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && echo 'ja_JP.UTF-8 UTF-8' > /etc/locale.gen \
-    && locale-gen ja_JP.UTF-8
+RUN microdnf update -y \
+    microdnf install -y glibc-locale-source \
+    localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
 
 ENV LC_ALL="ja_JP.UTF-8" \
     LANG="ja_JP.UTF-8"
