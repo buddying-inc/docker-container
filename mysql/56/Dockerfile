@@ -1,10 +1,13 @@
 FROM mysql:5.6
 
-# Set debian default locale to ja_JP.UTF-8
-# ref. https://qiita.com/noradogg/items/e0e09db2e548dff3b664
-
-RUN yum update -y \
-    && localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
+RUN echo "deb http://archive.debian.org/debian/ stretch main" > /etc/apt/sources.list \
+    && echo "deb http://archive.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y locales \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo 'ja_JP.UTF-8 UTF-8' > /etc/locale.gen \
+    && locale-gen ja_JP.UTF-8
 
 ENV LC_ALL="ja_JP.UTF-8" \
     LANG="ja_JP.UTF-8"
