@@ -17,7 +17,7 @@ RUN yum update -y \
        zip \
        unzip \
        yum-utils \
-    && yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    && yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum clean all
 
 # locale & timezome (depends on "glibc-langpack-ja")
