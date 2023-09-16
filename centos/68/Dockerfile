@@ -18,6 +18,6 @@ RUN sed -i -e "s/^mirrorlist=http:\/\/mirrorlist.centos.org/#mirrorlist=http:\/\
 # locale & timezome
 RUN echo 'ZONE="Asia/Tokyo"' > /etc/sysconfig/clock \
     && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-ENV LANG="ja_JP.utf8" \
-    LC_ALL="ja_JP.utf8" \
+ENV LANG="ja_JP.UTF-8" \
+    LC_ALL="ja_JP.UTF-8" \
     LANGUAGE="ja_JP:ja"
