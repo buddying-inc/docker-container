@@ -1,4 +1,4 @@
-FROM mysql:8.0
+FROM mysql:8.0-debian
 
 # Set debian default locale to ja_JP.UTF-8
 # ref. http://qiita.com/muff1225/items/48e0753e7b745ec3ecbd
