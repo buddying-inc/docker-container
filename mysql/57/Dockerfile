@@ -2,7 +2,10 @@ FROM mysql:5.7
 
 # Set debian default locale to ja_JP.UTF-8
 # ref. http://qiita.com/muff1225/items/48e0753e7b745ec3ecbd
-ENV LC_ALL ja_JP.UTF-8
+
+ENV LC_ALL="ja_JP.UTF-8" \
+    LANG="ja_JP.UTF-8"
+
 RUN sed -i 's/\/\/archive.ubuntu.com/\/\/jp.archive.ubuntu.com/g' /etc/apt/sources.list \
     && sed -i 's/\/\/us.archive.ubuntu.com/\/\/jp.archive.ubuntu.com/g' /etc/apt/sources.list \
     && sed -i 's/\/\/fr.archive.ubuntu.com/\/\/jp.archive.ubuntu.com/g' /etc/apt/sources.list \
