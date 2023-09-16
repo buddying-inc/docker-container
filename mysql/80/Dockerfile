@@ -1,7 +1,7 @@
 FROM mysql:8.0
 
 # Set debian default locale to ja_JP.UTF-8
-# ref. http://qiita.com/muff1225/items/48e0753e7b745ec3ecbd
+# ref. https://qiita.com/noradogg/items/e0e09db2e548dff3b664
 
 RUN microdnf update -y \
     microdnf install -y glibc-locale-source \
