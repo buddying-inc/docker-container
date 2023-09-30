@@ -40,7 +40,6 @@ RUN yum install -y \
            php80-php-xsl \
            php80-php-zip \
            php80-php-zlib \
-           php80-php-pecl-memcached \
            php80-php-pecl-mongodb \
     && yum clean all \
     && ln -s /usr/bin/php80 /usr/bin/php
