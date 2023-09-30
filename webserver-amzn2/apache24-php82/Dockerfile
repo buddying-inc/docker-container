@@ -52,7 +52,7 @@ RUN yum install zlib-devel perl-IPC-Cmd \
     && make \
     && make install \
     && ln -s /usr/local/lib64/libssl.so.3 /usr/lib64/libssl.so.3 \
-    && ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3
+    && ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3 \
     && wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.2/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
     && tar -zxvf amazon-elasticache-cluster-client.tar \
     && mv amazon-elasticache-cluster-client.so /opt/remi/php82/root/usr/lib64/php/modules \
