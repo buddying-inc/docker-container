@@ -45,6 +45,20 @@ RUN yum install -y \
     && yum clean all \
     && ln -s /usr/bin/php80 /usr/bin/php
 
+RUN yum install -y zlib-devel perl-IPC-Cmd \
+    && curl -O https://www.openssl.org/source/openssl-3.1.1.tar.gz \
+    && tar zxvf openssl-3.1.1.tar.gz \
+    && cd openssl-3.1.1 \
+    && ./Configure \
+    && make \
+    && make install \
+    && ln -s /usr/local/lib64/libssl.so.3 /usr/lib64/libssl.so.3 \
+    && ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3 \
+    && wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.0/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
+    && tar -zxvf amazon-elasticache-cluster-client.tar \
+    && mv amazon-elasticache-cluster-client.so /opt/remi/php80/root/usr/lib64/php/modules \
+    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/opt/remi/php80/php.ini
+
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-amzn2/apache24-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
 COPY ${GITHUB_WORKSPACE}/webserver-amzn2/apache24-php80/setup/ssl.conf /etc/httpd/conf.d/ssl.conf
