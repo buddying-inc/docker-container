@@ -44,7 +44,7 @@ RUN yum install -y \
     && yum clean all \
     && ln -s /usr/bin/php82 /usr/bin/php
 
-RUN yum install zlib-devel perl-IPC-Cmd \
+RUN yum install -y zlib-devel perl-IPC-Cmd \
     && curl -O https://www.openssl.org/source/openssl-3.1.1.tar.gz \
     && tar zxvf openssl-3.1.1.tar.gz \
     && cd openssl-3.1.1 \
