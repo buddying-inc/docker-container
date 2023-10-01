@@ -17,14 +17,13 @@ RUN yum update -y \
        zip \
        unzip \
        yum-utils \
-    && yum clean all \
-    && wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    && rpm -ivh epel-release-latest-7.noarch.rpm
+    && yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    && yum clean all
 
 # locale & timezome (depends on "glibc-langpack-ja")
 # note: can't use timedatectl command in docker container.
 # note: amazonlinux2 isn't need "RUN localedef -f UTF-8 -i ja_JP.utf8"
 ENV TZ="Asia/Tokyo" \
-    LANG="ja_JP.utf8" \
-    LC_ALL="ja_JP.utf8" \
+    LANG="ja_JP.UTF-8" \
+    LC_ALL="ja_JP.UTF-8" \
     LANGUAGE="ja_JP:ja"

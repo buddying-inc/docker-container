@@ -8,9 +8,9 @@ RUN yum install -y \
         httpd \
         mod_ssl \
         postfix \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+    && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum install -y libzstd --enablerepo=epel --disablerepo=amzn2-core \
-    && yum install -y --enablerepo=epel,remi,remi-php72 \
+    && yum install -y --enablerepo=epel \
            php72 \
            php72-php \
            php72-php-common \
@@ -40,10 +40,23 @@ RUN yum install -y \
            php72-php-xsl \
            php72-php-zip \
            php72-php-zlib \
-           php72-php-pecl-memcached \
            php72-php-pecl-mongodb \
     && yum clean all \
     && ln -s /usr/bin/php72 /usr/bin/php
+
+RUN yum install -y zlib-devel perl-IPC-Cmd \
+    && curl -O https://www.openssl.org/source/openssl-3.1.1.tar.gz \
+    && tar zxvf openssl-3.1.1.tar.gz \
+    && cd openssl-3.1.1 \
+    && ./Configure \
+    && make \
+    && make install \
+    && ln -s /usr/local/lib64/libssl.so.3 /usr/lib64/libssl.so.3 \
+    && ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3 \
+    && wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-7.2/latest-64bit -O amazon-elasticache-cluster-client.tar \
+    && tar -zxvf amazon-elasticache-cluster-client.tar \
+    && mv amazon-elasticache-cluster-client.so /opt/remi/php72/root/usr/lib64/php/modules \
+    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/opt/remi/php72/php.ini
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-amzn2/apache24-php72/setup/httpd_dev.conf /etc/httpd/conf.d/

@@ -8,9 +8,9 @@ RUN yum install -y \
         httpd \
         mod_ssl \
         postfix \
-    && yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+    && yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum install -y libzstd --enablerepo=epel --disablerepo=amzn2-core \
-    && yum install -y --enablerepo=epel,remi,remi-php80 \
+    && yum install -y --enablerepo=epel \
            php80 \
            php80-php \
            php80-php-common \
@@ -40,10 +40,23 @@ RUN yum install -y \
            php80-php-xsl \
            php80-php-zip \
            php80-php-zlib \
-           php80-php-pecl-memcached \
            php80-php-pecl-mongodb \
     && yum clean all \
     && ln -s /usr/bin/php80 /usr/bin/php
+
+RUN yum install -y zlib-devel perl-IPC-Cmd \
+    && curl -O https://www.openssl.org/source/openssl-3.1.1.tar.gz \
+    && tar zxvf openssl-3.1.1.tar.gz \
+    && cd openssl-3.1.1 \
+    && ./Configure \
+    && make \
+    && make install \
+    && ln -s /usr/local/lib64/libssl.so.3 /usr/lib64/libssl.so.3 \
+    && ln -s /usr/local/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3 \
+    && wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.0/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
+    && tar -zxvf amazon-elasticache-cluster-client.tar \
+    && mv amazon-elasticache-cluster-client.so /opt/remi/php80/root/usr/lib64/php/modules \
+    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/opt/remi/php80/php.ini
 
 # copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-amzn2/apache24-php80/setup/httpd_dev.conf /etc/httpd/conf.d/
