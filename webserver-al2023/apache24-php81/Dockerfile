@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ghcr.io/buddying-inc/amazonlinux:2023
+FROM ghcr.io/buddying-inc/amazonlinux:2023
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
