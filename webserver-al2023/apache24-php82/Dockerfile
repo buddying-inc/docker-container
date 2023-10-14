@@ -15,30 +15,15 @@ RUN dnf install -y \
     && dnf install -y \
            php8.2 \
            php8.2-common \
-           php8.2-ctype \
-           php8.2-curl \
            php8.2-devel \
-           php8.2-fileinfo \
            php8.2-gd \
-           php8.2-hash \
            php8.2-intl \
-           php8.2-json \
-           php8.2-libxml \
            php8.2-mbstring \
            php8.2-mysqlnd \
-           php8.2-openssl \
            php8.2-opcache \
            php8.2-pdo \
-           php8.2-pear \
-           php8.2-posix \
-           php8.2-phar \
-           php8.2-session \
-           php8.2-simplexml \
            php8.2-soap \
            php8.2-xml \
-           php8.2-xmlwriter \
-           php8.2-xsl \
-           php8.2-zlib \
     && dnf clean all
 
 RUN yes '' | pecl install \
