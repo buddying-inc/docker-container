@@ -1,4 +1,4 @@
-FROM ghcr.io/buddying-inc/amazonlinux:2023
+FROM --platform=linux/amd64 ghcr.io/buddying-inc/amazonlinux:2023
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
@@ -29,7 +29,7 @@ RUN dnf install -y \
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
 RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
     && tar -zxvf amazon-elasticache-cluster-client.tar \
-    && mv amazon-elasticache-cluster-client.so /usr/lib64/php8.1/modules \
+    && mv amazon-elasticache-cluster-client.so /usr/lib64/php/modules \
     && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.ini
 
 ## copy setting files
