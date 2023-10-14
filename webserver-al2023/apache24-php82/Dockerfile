@@ -13,32 +13,32 @@ RUN dnf install -y \
         zip \
         unzip \
     && dnf install -y \
-           php8.1 \
-           php8.1-common \
-           php8.1-ctype \
-           php8.1-curl \
-           php8.1-devel \
-           php8.1-fileinfo \
-           php8.1-gd \
-           php8.1-hash \
-           php8.1-intl \
-           php8.1-json \
-           php8.1-libxml \
-           php8.1-mbstring \
-           php8.1-mysqlnd \
-           php8.1-openssl \
-           php8.1-opcache \
-           php8.1-pdo \
-           php8.1-pear \
-           php8.1-posix \
-           php8.1-phar \
-           php8.1-session \
-           php8.1-simplexml \
-           php8.1-soap \
-           php8.1-xml \
-           php8.1-xmlwriter \
-           php8.1-xsl \
-           php8.1-zlib \
+           php8.2 \
+           php8.2-common \
+           php8.2-ctype \
+           php8.2-curl \
+           php8.2-devel \
+           php8.2-fileinfo \
+           php8.2-gd \
+           php8.2-hash \
+           php8.2-intl \
+           php8.2-json \
+           php8.2-libxml \
+           php8.2-mbstring \
+           php8.2-mysqlnd \
+           php8.2-openssl \
+           php8.2-opcache \
+           php8.2-pdo \
+           php8.2-pear \
+           php8.2-posix \
+           php8.2-phar \
+           php8.2-session \
+           php8.2-simplexml \
+           php8.2-soap \
+           php8.2-xml \
+           php8.2-xmlwriter \
+           php8.2-xsl \
+           php8.2-zlib \
     && dnf clean all
 
 RUN yes '' | pecl install \
@@ -49,9 +49,9 @@ RUN echo -e "extension=apcu.so\n" >> /etc/php.ini \
  && echo -e "extension=zip.so\n" >> /etc/php.ini
 
 ## copy setting files
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/php/99-custom.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/docker-entrypoint.sh /
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php82/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php82/files/php/99-custom.ini /etc/php.d/
+COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php82/files/docker-entrypoint.sh /
 
 ## directory, permission, ...
 RUN mkdir -p /run/php-fpm \
