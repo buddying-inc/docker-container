@@ -26,12 +26,14 @@ RUN dnf install -y \
            php8.1-xml \
     && dnf clean all
 
-RUN yes '' | pecl install \
-    apcu \
-    zip
-
 RUN echo -e "extension=apcu.so\n" >> /etc/php.ini \
  && echo -e "extension=zip.so\n" >> /etc/php.ini
+
+# https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
+#RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
+#    && tar -zxvf amazon-elasticache-cluster-client.tar \
+#    && mv amazon-elasticache-cluster-client.so /usr/lib64/php8.1/modules \
+#    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.ini
 
 ## copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
