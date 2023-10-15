@@ -26,6 +26,12 @@ RUN dnf install -y \
            php8.2-xml \
     && dnf clean all
 
+RUN yes 'y' | dnf install php-pear \
+    && yes '' | pecl install APCu \
+    && yes '' | pecl install zip \
+    && echo "extension=apcu.so" > /etc/php.d/50-pecl-apcu.ini \
+    && echo "extension=zip.so" > /etc/php.d/50-pecl-zip.ini
+
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
 # https://github.com/aws-samples/aws-refarch-moodle/blob/master/templates/04-web.yaml#L497C35-L497C133
 RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.2/latest-64bit-`if [ $(uname -a | grep -c "x86_64") == "1" ]; then echo "X86"; else echo "arm-X86"; fi`-openssl3 -O amazon-elasticache-cluster-client.tar \
