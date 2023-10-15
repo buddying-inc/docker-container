@@ -27,10 +27,11 @@ RUN dnf install -y \
     && dnf clean all
 
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
-#RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
-#    && tar -zxvf amazon-elasticache-cluster-client.tar \
-#    && mv amazon-elasticache-cluster-client.so /usr/lib64/php/modules \
-#    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.ini
+# https://github.com/aws-samples/aws-refarch-moodle/blob/master/templates/04-web.yaml#L497C35-L497C133
+RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-`if [ $(uname -a | grep -c "x86_64") == "1" ]; then echo "8.1/latest-64bit-X86"; else echo "8.2/latest-64bit-arm-X86"; fi`-openssl3 -O amazon-elasticache-cluster-client.tar \
+    && tar -zxvf amazon-elasticache-cluster-client.tar \
+    && mv amazon-elasticache-cluster-client.so /usr/lib64/php/modules \
+    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.d/50-elasticache.ini
 
 ## copy setting files
 COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php81/files/httpd/custom.conf /etc/httpd/conf.d/
