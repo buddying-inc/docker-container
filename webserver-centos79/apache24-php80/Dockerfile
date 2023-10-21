@@ -51,15 +51,15 @@ COPY ${GITHUB_WORKSPACE}/webserver-centos79/apache24-php80/setup/entrypoint.sh /
 
 # Directory, permission, ... 
 RUN rm -rf /var/www/* \
- && mkdir /var/www/html \
- && mkdir /var/log/php \
- && chmod 777 -R /var/log/php \
- && chmod 777 -R /var/opt/remi/php80/lib/php/session \
- && usermod -u 1000 apache \
- && groupmod -g 1000 apache \
- && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
- && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
- && chmod 700 /entrypoint.sh
+    && mkdir /var/www/html \
+    && mkdir /var/log/php \
+    && chmod 777 -R /var/log/php \
+    && chmod 777 -R /var/opt/remi/php80/lib/php/session \
+    && usermod -u 1000 apache \
+    && groupmod -g 1000 apache \
+    && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
+    && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
+    && chmod 700 /entrypoint.sh
 
 # env, port
 ENV HOME=/root
