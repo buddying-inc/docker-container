@@ -9,5 +9,4 @@ if [ "$xdebug" != 'on' ] && [ -e /etc/php.d/15-xdebug.ini ]; then
 fi
 
 /usr/sbin/postfix start
-/usr/sbin/php-fpm
 /usr/sbin/httpd -DFOREGROUND
