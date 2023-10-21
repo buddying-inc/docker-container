@@ -4,6 +4,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
 # packages
+# "php8.1-opcache" があると "Segmentation fault" が発生する
 RUN dnf install -y \
         httpd \
         wget \
@@ -20,7 +21,6 @@ RUN dnf install -y \
            php8.1-intl \
            php8.1-mbstring \
            php8.1-mysqlnd \
-           php8.1-opcache \
            php8.1-pdo \
            php8.1-soap \
            php8.1-xml \
