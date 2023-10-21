@@ -50,16 +50,16 @@ COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php80/files/php/99-custom.i
 COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php80/files/docker-entrypoint.sh /
 
 # directory, permission, ...
-RUN mkdir -p /run/php-fpm \
- && mkdir -p /var/log/php \
- && chmod 777 -R /run/php-fpm \
- && chmod 777 -R /var/log/php \
- && chmod 777 -R /var/lib/php/session \
- && usermod -u 1000 apache \
- && groupmod -g 1000 apache \
- && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
- && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
- && chmod 700 /docker-entrypoint.sh
+RUN mkdir -p /var/log/php \
+    && chmod 777 -R /var/log/php \
+    && chmod 777 -R /var/lib/php/session \
+    && usermod -u 1000 apache \
+    && groupmod -g 1000 apache \
+    && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
+    && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
+    && sed -i.dist -e 's/^#LoadModule mpm_prefork_module/LoadModule mpm_prefork_module/g' \
+                   -e 's/^LoadModule mpm_event_module/#LoadModule mpm_event_module/g' /etc/httpd/conf.modules.d/00-mpm.conf \
+    && chmod 700 /docker-entrypoint.sh
 
 # env, port
 ENV HOME=/root
