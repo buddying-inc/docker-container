@@ -23,7 +23,6 @@ RUN dnf install -y \
            php8.1-pdo \
            php8.1-soap \
            php8.1-xml \
-           php-pear \
     && dnf clean all
 
 RUN yes 'y' | dnf install php-pear \
