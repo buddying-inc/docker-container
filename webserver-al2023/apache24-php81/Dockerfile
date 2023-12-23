@@ -33,7 +33,8 @@ RUN yes 'y' | dnf install php-pear \
 
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
 # https://github.com/aws-samples/aws-refarch-moodle/blob/master/templates/04-web.yaml#L497C35-L497C133
-RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
+# RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl3 -O amazon-elasticache-cluster-client.tar \
+RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.2/latest-64bit-`if [ $(uname -a | grep -c "x86_64") == "1" ]; then echo "X86"; else echo "arm-X86"; fi`-openssl3 -O amazon-elasticache-cluster-client.tar \
     && tar -zxvf amazon-elasticache-cluster-client.tar \
     && mv amazon-elasticache-cluster-client.so /usr/lib64/php/modules \
     && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.d/50-elasticache.ini
