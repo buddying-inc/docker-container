@@ -40,6 +40,7 @@ RUN yum install -y \
            php72-php-xsl \
            php72-php-zip \
            php72-php-zlib \
+           php72-php-pecl-xdebug3 \
            php72-php-pecl-mongodb \
     && yum clean all \
     && ln -s /usr/bin/php72 /usr/bin/php
