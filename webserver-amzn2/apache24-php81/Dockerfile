@@ -45,7 +45,7 @@ RUN yum install -y \
     && yum clean all \
     && ln -s /usr/bin/php81 /usr/bin/php
 
-RUN yum install openssl11 openssl11-libs
+RUN yum install -y openssl11 openssl11-libs
 RUN wget https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.1/latest-64bit-X86-openssl1.1 -O amazon-elasticache-cluster-client.tar \
     && tar -zxvf amazon-elasticache-cluster-client.tar \
     && mv amazon-elasticache-cluster-client.so /opt/remi/php81/root/usr/lib64/php/modules \
