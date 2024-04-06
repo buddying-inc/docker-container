@@ -40,6 +40,7 @@ RUN yum install -y \
            php74-php-xsl \
            php74-php-zip \
            php74-php-zlib \
+           php74-php-pecl-xdebug3 \
            php74-php-pecl-mongodb \
     && yum clean all \
     && ln -s /usr/bin/php74 /usr/bin/php
