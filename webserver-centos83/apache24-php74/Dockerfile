@@ -51,15 +51,17 @@ COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php74/setup/entrypoint.sh /
 
 # directory, permission, ...
 RUN rm -rf /var/www/* \
- && mkdir /var/www/html \
- && mkdir /var/log/php \
- && chmod 777 -R /var/log/php \
- && chmod 777 -R /var/lib/php/session \
- && usermod -u 1000 apache \
- && groupmod -g 1000 apache \
- && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
- && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
- && chmod 700 /entrypoint.sh
+    && mkdir /var/www/html \
+    && mkdir /var/log/php \
+    && chmod 777 -R /var/log/php \
+    && chmod 777 -R /var/lib/php/session \
+    && usermod -u 1000 apache \
+    && groupmod -g 1000 apache \
+    && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
+    && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
+    && sed -i.dist -e 's/^#LoadModule mpm_prefork_module/LoadModule mpm_prefork_module/g' \
+                   -e 's/^LoadModule mpm_event_module/#LoadModule mpm_event_module/g' /etc/httpd/conf.modules.d/00-mpm.conf \
+    && chmod 700 /entrypoint.sh
 
 # env, port
 ENV HOME=/root
