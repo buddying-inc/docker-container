@@ -12,4 +12,4 @@ ENV LC_ALL="ja_JP.UTF-8" \
 
 # Settings
 COPY ${GITHUB_WORKSPACE}/mysql/80/setup/my.cnf /etc/mysql/conf.d/
-RUN chmod 644 /etc/mysql/conf.d/my.conf
+RUN chmod 644 /etc/mysql/conf.d/my.cnf
