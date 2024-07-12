@@ -41,6 +41,7 @@ RUN dnf install -y \
            php-xsl \
            php-zip \
            php-zlib \
+           php-pecl-xdebug3 \
            php-pecl-memcached \
     && dnf clean all
 
