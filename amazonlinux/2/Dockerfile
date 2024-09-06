@@ -17,8 +17,8 @@ RUN yum update -y \
        zip \
        unzip \
        yum-utils \
-    && yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    && yum clean all
+    && yum clean all \
+    && amazon-linux-extras install epel -y
 
 # locale & timezome (depends on "glibc-langpack-ja")
 # note: can't use timedatectl command in docker container.
