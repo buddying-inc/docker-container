@@ -1,4 +1,4 @@
-name: webserver-centos83-apache24-php81
+name: webserver-centos83-apache24-php72
 on:
 #  pull_request:
 #    branches: [master]
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PACKAGE_NAME: webserver-centos83
-      VERSION_NAME: apache24-php81
+      VERSION_NAME: apache24-php72
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
