@@ -3,7 +3,6 @@ on:
 #  pull_request:
 #    branches: [master]
   workflow_dispatch:
-    branches: [master]
 jobs:
   publish:
     name: Push Docker image to GitHub Container Registry
@@ -34,3 +33,4 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/${{ env.PACKAGE_NAME }}:${{ env.VERSION_NAME }}
           file: ${{ env.PACKAGE_NAME }}/${{ env.VERSION_NAME }}/Dockerfile
+          platforms: linux/amd64, linux/arm64/v8
