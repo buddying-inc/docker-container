@@ -4,7 +4,9 @@ FROM centos:centos7.9.2009
 RUN echo 'NETWORKING=yes' > /etc/sysconfig/network
 
 # packages
-RUN yum update -y --exclude=kernel* --exclude=centos* \
+RUN sed -i -e "s/^mirrorlist/#mirrorlist/g" /etc/yum.repos.d/CentOS-*.repo \
+    && sed -i -e "s/^#baseurl=http:\/\/mirror/baseurl=http:\/\/vault/g" /etc/yum.repos.d/CentOS-*.repo \
+    && yum update -y --exclude=kernel* --exclude=centos* \
     && yum install -y epel-release \
     && yum reinstall -y glibc-common \
     && yum install -y \
