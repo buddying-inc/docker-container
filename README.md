@@ -78,7 +78,8 @@
 | PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
 | PHP8.1 | Apache 2.4 | 🐳          | 🐳          |
 | PHP8.0 | Apache 2.4 | 🐳          | 🐳          |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.4 | Apache 2.4 | 🐳          | 🐳          |
+| PHP7.2 | Apache 2.4 | 🐳          | 🐳          |
 
 ## AmazonLinux 2
 
