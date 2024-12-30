@@ -16,6 +16,12 @@
 
 ## CentOS 6.8
 
+### Base
+
+| AMD | ARM  |
+|-----|------|
+| 🐳  | 🙅🏻 |
+
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68)
 
 Apache 2.2
@@ -27,6 +33,12 @@ Apache 2.2
 | PHP7.0               | 🐳  | 🙅🏻  |
 
 ## CentOS 7.5
+
+### Base
+
+| AMD | ARM  |
+|-----|------|
+| 🐳  | 🙅🏻 |
 
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75)
 
@@ -40,6 +52,12 @@ Apache 2.4
 
 ## CentOS 7.9
 
+### Base
+
+| AMD | ARM  |
+|-----|------|
+| 🐳  | 🙅🏻 |
+
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
 
 Apache 2.4
@@ -51,6 +69,12 @@ Apache 2.4
 | PHP8.0 | 🐳  | 🙅🏻  |
 
 ## CentOS 8.3
+
+### Base
+
+| AMD | ARM  |
+|-----|------|
+| 🐳  | 🙅🏻 |
 
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)
 
@@ -65,6 +89,12 @@ Apache 2.4
 
 ## AmazonLinux 2
 
+### Base
+
+| AMD | ARM |
+|-----|-----|
+| 🐳  | 🐳  |
+
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-amzn2)
 
 Apache 2.4
@@ -78,6 +108,12 @@ Apache 2.4
 | PHP8.2 | 🐳  | 🙅🏻  |
 
 ## AmazonLinux 2023
+
+### Base
+
+| AMD | ARM |
+|-----|-----|
+| 🐳  | 🐳  |
 
 ### [Web server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)
 
