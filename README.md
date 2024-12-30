@@ -27,9 +27,9 @@
 
 |                      | Web Server | linux/amd64 | linux/arm64 |
 |----------------------|------------|-------------|-------------|
+| PHP7.0               | Apache2.2  | 🐳          | 🙅🏻        |
 | PHP5.6               | Apache2.2  | 🐳          | 🙅🏻        |
 | PHP5.6 with memcache | Apache2.2  | 🐳          | 🙅🏻        |
-| PHP7.0               | Apache2.2  | 🐳          | 🙅🏻        |
 
 ## CentOS 7.5
 
@@ -43,9 +43,9 @@
 
 |        | Web Server | linux/amd64 | linux/arm64 |
 |--------|------------|-------------|-------------|
-| PHP7.1 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
 | PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.1 | Apache 2.4 | 🐳          | 🙅🏻        |
 
 ## CentOS 7.9
 
@@ -53,32 +53,32 @@
 
 | linux/amd64 | linux/arm64 |
 |-------------|-------------|
-| 🐳          | 🙅🏻        |
+| 🐳          | 🐳          |
 
 ### [Application server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
 
 |        | Web Server | linux/amd64 | linux/arm64 |
 |--------|------------|-------------|-------------|
-| PHP7.3 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
 | PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.3 | Apache 2.4 | 🐳          | 🙅🏻        |
 
 ## CentOS 8.3
 
 ### Base
 
-| linux/amd64 | linux/arm64  |
-|-----|------|
-| 🐳  | 🙅🏻 |
+| linux/amd64 | linux/arm64 |
+|-------------|-------------|
+| 🐳          | 🐳          |
 
 ### [Application server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)
 
 |        | Web Server | linux/amd64 | linux/arm64 |
 |--------|------------|-------------|-------------|
+| PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
+| PHP8.1 | Apache 2.4 | 🐳          | 🐳          |
+| PHP8.0 | Apache 2.4 | 🐳          | 🐳          |
 | PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.2 | Apache 2.4 | 🐳          | 🙅🏻        |
 
 ## AmazonLinux 2
 
@@ -92,11 +92,13 @@
 
 |        | Web Server | linux/amd64 | linux/arm64 |
 |--------|------------|-------------|-------------|
-| PHP7.2 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
 | PHP8.2 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
+| PHP7.2 | Apache 2.4 | 🐳          | 🙅🏻        |
+
+※ Remi リポジトリの [CentOS 7](https://ftp.riken.jp/Linux/remi/enterprise/7/) 系に ARM 版ビルドはない。
 
 ## AmazonLinux 2023
 
@@ -111,7 +113,7 @@
 
 |        | Web Server | linux/amd64 | linux/arm64 |
 |--------|------------|-------------|-------------|
-| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
 | PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
+| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
 
 ※ PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
