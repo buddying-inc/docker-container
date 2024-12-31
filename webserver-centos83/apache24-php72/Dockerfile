@@ -4,10 +4,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
 # required "libedit-devel" package
-# RUN dnf config-manager --set-enabled powertools
-RUN sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/CentOS-Stream-PowerTools.repo
 # required "php-devel" module
-RUN dnf install -y libedit-devel
+RUN dnf install -y dnf-plugins-core \
+    && dnf config-manager --set-enabled powertools \
+    && dnf install -y libedit-devel
 
 # packages
 RUN dnf install -y \
