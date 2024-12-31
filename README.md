@@ -67,7 +67,7 @@
 | PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
 | PHP7.3 | Apache 2.4 | 🐳          | 🙅🏻        |
 
-### [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
+[Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
 
 ## CentOS 8.3
 
