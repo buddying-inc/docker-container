@@ -18,18 +18,18 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64 |
-|-------------|-------------|
-| 🐳          | 🙅🏻        |
+|  linux/amd64  |  linux/arm64  |
+|:-------------:|:-------------:|
+|      🐳       |     🙅🏻      |
 
 ### Application server
 
 
-|                      | Web Server | linux/amd64 | linux/arm64 |
-|----------------------|------------|-------------|-------------|
-| PHP7.0               | Apache2.2  | 🐳          | 🙅🏻        |
-| PHP5.6               | Apache2.2  | 🐳          | 🙅🏻        |
-| PHP5.6 with memcache | Apache2.2  | 🐳          | 🙅🏻        |
+|                       | Web Server |  linux/amd64  |  linux/arm64  |
+|-----------------------|------------|:-------------:|:-------------:|
+| PHP 7.0               | Apache2.2  |      🐳       |     🙅🏻      |
+| PHP 5.6               | Apache2.2  |      🐳       |     🙅🏻      |
+| PHP 5.6 with memcache | Apache2.2  |      🐳       |     🙅🏻      |
 
 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68)
 
@@ -37,17 +37,17 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64  |
-|-----|------|
-| 🐳  | 🙅🏻 |
+| linux/amd64 | linux/arm64 |
+|:-----------:|:-----------:|
+|     🐳      |    🙅🏻     |
 
 ### Application Server
 
-|        | Web Server | linux/amd64 | linux/arm64 |
-|--------|------------|-------------|-------------|
-| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.1 | Apache 2.4 | 🐳          | 🙅🏻        |
+|         | Web Server |  linux/amd64  |  linux/arm64  |
+|---------|------------|:-------------:|:-------------:|
+| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.1 | Apache 2.4 |      🐳       |     🙅🏻      |
 
 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75)
 
@@ -55,17 +55,17 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64 |
-|-------------|-------------|
-| 🐳          | 🐳          |
+|  linux/amd64  |  linux/arm64  |
+|:-------------:|:-------------:|
+|      🐳       |      🐳       |
 
 ### Application server
 
-|        | Web Server | linux/amd64 | linux/arm64 |
-|--------|------------|-------------|-------------|
-| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.3 | Apache 2.4 | 🐳          | 🙅🏻        |
+|         | Web Server |  linux/amd64  |  linux/arm64  |
+|---------|------------|:-------------:|:-------------:|
+| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.3 | Apache 2.4 |      🐳       |     🙅🏻      |
 
 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
 
@@ -73,19 +73,19 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64 |
-|-------------|-------------|
-| 🐳          | 🐳          |
+|  linux/amd64  |  linux/arm64  |
+|:-------------:|:-------------:|
+|      🐳       |      🐳       |
 
 ### Application server
 
-|        | Web Server | linux/amd64 | linux/arm64 |
-|--------|------------|-------------|-------------|
-| PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
-| PHP8.1 | Apache 2.4 | 🐳          | 🐳          |
-| PHP8.0 | Apache 2.4 | 🐳          | 🐳          |
-| PHP7.4 | Apache 2.4 | 🐳          | 🐳          |
-| PHP7.2 | Apache 2.4 | 🐳          | 🐳          |
+|         | Web Server |  linux/amd64  |  linux/arm64  |
+|---------|------------|:-------------:|:-------------:|
+| PHP 8.2 | Apache 2.4 |      🐳       |      🐳       |
+| PHP 8.1 | Apache 2.4 |      🐳       |      🐳       |
+| PHP 8.0 | Apache 2.4 |      🐳       |      🐳       |
+| PHP 7.4 | Apache 2.4 |      🐳       |      🐳       |
+| PHP 7.2 | Apache 2.4 |      🐳       |      🐳       |
 
 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)
 
@@ -93,19 +93,19 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64 |
-|-------------|-------------|
-| 🐳          | 🐳          |
+|  linux/amd64  |  linux/arm64  |
+|:-------------:|:-------------:|
+|      🐳       |      🐳       |
 
 ### Application server
 
-|        | Web Server | linux/amd64 | linux/arm64 |
-|--------|------------|-------------|-------------|
-| PHP8.2 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP8.0 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.4 | Apache 2.4 | 🐳          | 🙅🏻        |
-| PHP7.2 | Apache 2.4 | 🐳          | 🙅🏻        |
+|         | Web Server |  linux/amd64  |  linux/arm64  |
+|---------|------------|:-------------:|:-------------:|
+| PHP 8.2 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 8.1 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
+| PHP 7.2 | Apache 2.4 |      🐳       |     🙅🏻      |
 
 ※ Remi リポジトリの [CentOS 7](https://ftp.riken.jp/Linux/remi/enterprise/7/) 系に ARM 版ビルドはない。
 
@@ -115,18 +115,30 @@
 
 ### Base
 
-| linux/amd64 | linux/arm64 |
-|-------------|-------------|
-| 🐳          | 🐳          |
+|  linux/amd64  |  linux/arm64  |
+|:-------------:|:-------------:|
+|      🐳       |      🐳       |
 
 ### Application server
 
 
-|        | Web Server | linux/amd64 | linux/arm64 |
-|--------|------------|-------------|-------------|
-| PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
-| PHP8.1 | Apache 2.4 | 🐳          | 🙅🏻        |
+|         | Web Server |  linux/amd64  |  linux/arm64  |
+|---------|------------|:-------------:|:-------------:|
+| PHP 8.2 | Apache 2.4 |      🐳       |      🐳       |
+| PHP 8.1 | Apache 2.4 |      🐳       |     🙅🏻      |
 
 ※ PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
 
 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)
+
+## DataBase
+
+### MySQL
+
+|     | linux/amd64 | linux/arm64 |
+|-----|:-----------:|:-----------:|
+| 8.0 |     🐳      |     🐳      |
+| 5.7 |     🐳      |    🙅🏻     |
+| 5.6 |     🐳      |    🙅🏻     |
+
+[Get images](https://github.com/orgs/buddying-inc/packages/container/package/mysql)
