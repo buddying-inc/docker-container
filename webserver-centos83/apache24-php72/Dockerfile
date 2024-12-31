@@ -4,12 +4,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
 # packages
+RUN dnf dnf config-manager --set-enabled powertools # required "libedit-devel" package
 RUN dnf install -y \
         httpd \
         postfix \
         zip \
         unzip \
-        libedit-devel \
     && dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.4.rpm \
     && dnf module reset -y php \
     && dnf module install -y php:remi-7.2 \
