@@ -3,8 +3,12 @@ FROM ghcr.io/buddying-inc/centos:83
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
+# required "libedit-devel" package
+RUN dnf config-manager --set-enabled powertools
+# required "php-devel" module
+RUN dnf install -y libedit-devel
+
 # packages
-RUN dnf dnf config-manager --set-enabled powertools # required "libedit-devel" package
 RUN dnf install -y \
         httpd \
         postfix \
