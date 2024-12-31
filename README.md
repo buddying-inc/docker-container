@@ -73,13 +73,13 @@
 
 ### [Application server](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)
 
-|            | Web Server | linux/amd64 | linux/arm64 |
-|------------|------------|-------------|-------------|
-| PHP8.2     | Apache 2.4 | 🐳          | 🐳          |
-| PHP8.1     | Apache 2.4 | 🐳          | 🐳          |
-| PHP8.0     | Apache 2.4 | 🐳          | 🐳          |
-| PHP7.4     | Apache 2.4 | 🐳          | 🐳          |
-| WIP PHP7.2 | Apache 2.4 | 🐳          | 🐳          |
+|        | Web Server | linux/amd64 | linux/arm64 |
+|--------|------------|-------------|-------------|
+| PHP8.2 | Apache 2.4 | 🐳          | 🐳          |
+| PHP8.1 | Apache 2.4 | 🐳          | 🐳          |
+| PHP8.0 | Apache 2.4 | 🐳          | 🐳          |
+| PHP7.4 | Apache 2.4 | 🐳          | 🐳          |
+| PHP7.2 | Apache 2.4 | 🐳          | 🐳          |
 
 ## AmazonLinux 2
 
