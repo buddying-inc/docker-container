@@ -1,4 +1,4 @@
-FROM ubuntu:22.04-slim
+FROM ubuntu:22.04
 
 # パッケージリストの更新と必要パッケージのインストール
 RUN apt-get update \
