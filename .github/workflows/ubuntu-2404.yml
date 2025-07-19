@@ -1,4 +1,4 @@
-name: ubuntu-2204
+name: ubuntu-2404
 on:
 #  pull_request:
 #    branches: [master]
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PACKAGE_NAME: ubuntu
-      VERSION_NAME: 2204
+      VERSION_NAME: 2404
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4

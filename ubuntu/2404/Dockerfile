@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # パッケージリストの更新と必要パッケージのインストール
 RUN apt-get update \
