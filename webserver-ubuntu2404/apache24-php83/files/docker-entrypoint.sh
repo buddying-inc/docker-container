@@ -29,8 +29,19 @@ configure_xdebug() {
     local sapi_dirs=("apache2" "cli" "fpm")
 
     for sapi in "${sapi_dirs[@]}"; do
-        local xdebug_conf="/etc/php/8.3/${sapi}/conf.d/15-xdebug.ini"
+        local conf_dir="/etc/php/8.3/${sapi}/conf.d"
+
+        # Find actual xdebug config file (may have different numbering)
+        local xdebug_conf=$(find "$conf_dir" -name "*xdebug.ini" 2>/dev/null | head -1)
         local xdebug_disabled="${xdebug_conf}.disable"
+
+        # If no active config found, check for disabled one
+        if [ -z "$xdebug_conf" ]; then
+            xdebug_disabled=$(find "$conf_dir" -name "*xdebug.ini.disable" 2>/dev/null | head -1)
+            if [ -n "$xdebug_disabled" ]; then
+                xdebug_conf="${xdebug_disabled%.disable}"
+            fi
+        fi
 
         if [ "$xdebug" = "on" ]; then
             # Enable Xdebug
@@ -40,7 +51,7 @@ configure_xdebug() {
             elif [ -e "$xdebug_conf" ]; then
                 echo "Xdebug already enabled for $sapi"
             else
-                echo "Warning: Xdebug config not found for $sapi"
+                echo "Warning: Xdebug config not found for $sapi (searched in $conf_dir)"
             fi
         else
             # Disable Xdebug
@@ -50,7 +61,7 @@ configure_xdebug() {
             elif [ -e "$xdebug_disabled" ]; then
                 echo "Xdebug already disabled for $sapi"
             else
-                echo "Warning: Xdebug config not found for $sapi"
+                echo "Warning: Xdebug config not found for $sapi (searched in $conf_dir)"
             fi
         fi
     done
@@ -72,7 +83,7 @@ if ! pgrep -x "master" > /dev/null; then
 fi
 
 # Enable Apache modules if needed (optional)
-a2enmod rewrite
+# a2enmod rewrite
 # a2enmod ssl
 
 # Start Apache in foreground
