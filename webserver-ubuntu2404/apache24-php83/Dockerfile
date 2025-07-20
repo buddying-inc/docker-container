@@ -50,18 +50,18 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy Apache custom configuration
-COPY webserver-ubuntu2204/apache24-php83/files/apache2/custom.conf /etc/apache2/conf-available/custom.conf
+COPY webserver-ubuntu2404/apache24-php83/files/apache2/custom.conf /etc/apache2/conf-available/custom.conf
 
 # Enable custom Apache configuration
 RUN a2enconf custom
 
 # Copy PHP custom configuration
-COPY webserver-ubuntu2204/apache24-php83/files/php/99-custom.ini /etc/php/8.3/apache2/conf.d/99-custom.ini
-COPY webserver-ubuntu2204/apache24-php83/files/php/99-custom.ini /etc/php/8.3/cli/conf.d/99-custom.ini
-COPY webserver-ubuntu2204/apache24-php83/files/php/99-custom.ini /etc/php/8.3/fpm/conf.d/99-custom.ini
+COPY webserver-ubuntu2404/apache24-php83/files/php/99-custom.ini /etc/php/8.3/apache2/conf.d/99-custom.ini
+COPY webserver-ubuntu2404/apache24-php83/files/php/99-custom.ini /etc/php/8.3/cli/conf.d/99-custom.ini
+COPY webserver-ubuntu2404/apache24-php83/files/php/99-custom.ini /etc/php/8.3/fpm/conf.d/99-custom.ini
 
 # Copy docker entrypoint script
-COPY webserver-ubuntu2204/apache24-php83/files/docker-entrypoint.sh /docker-entrypoint.sh
+COPY webserver-ubuntu2404/apache24-php83/files/docker-entrypoint.sh /docker-entrypoint.sh
 
 # Set execute permission for entrypoint script
 RUN chmod +x /docker-entrypoint.sh
