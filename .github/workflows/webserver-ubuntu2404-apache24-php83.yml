@@ -1,4 +1,4 @@
-name: webserver-ubuntu2204-apache24-php83
+name: webserver-ubuntu2404-apache24-php83
 on:
 #  pull_request:
 #    branches: [master]
