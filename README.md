@@ -1,151 +1,181 @@
-# Docker container for development
+# Docker Container for Development
 
-## Dockerfiles
+## 📁 ディレクトリ構成
 
-### ディレクトリ構成
+### Dockerfile
 
-**Dockerfile**
+```
+[PACKAGE_NAME]/[TAG_NAME]/Dockerfile
+```
 
-`[PACKAGE_NAME]/[TAG_NAME]/Dockerfile`  
+### GitHub Actions
 
-**GitHub Actions**
-
-`.github/workflows/[PACKAGE_NAME]-[TAG_NAME].yml`
+```
+.github/workflows/[PACKAGE_NAME]-[TAG_NAME].yml
+```
 
 ---
 
-## Ubuntu 22.04
+## 🐧 Linux OS Support
 
-### Base
+### Ubuntu 24.04
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |      🐳       |
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
 
-## CentOS 6.8
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.4    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 8.3    | Apache 2.4 |     ✅     |     ✅     |
 
-### Base
+👉 **[Get Ubuntu 24.04 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-ubuntu2404)**
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |     🙅🏻      |
+---
 
-### Application server
+### CentOS 6.8
 
-|                       | Web Server |  linux/amd64  |  linux/arm64  |
-|-----------------------|------------|:-------------:|:-------------:|
-| PHP 7.0               | Apache2.2  |      🐳       |     🙅🏻      |
-| PHP 5.6               | Apache2.2  |      🐳       |     🙅🏻      |
-| PHP 5.6 with memcache | Apache2.2  |      🐳       |     🙅🏻      |
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ❌   |
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68)
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 7.0                | Apache 2.2 |     ✅     |     ❌     |
+| PHP 5.6                | Apache 2.2 |     ✅     |     ❌     |
+| PHP 5.6 with memcache  | Apache 2.2 |     ✅     |     ❌     |
 
-## CentOS 7.5
+👉 **[Get CentOS 6.8 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68)**
 
-### Base
+---
 
-| linux/amd64 | linux/arm64 |
-|:-----------:|:-----------:|
-|     🐳      |    🙅🏻     |
+### CentOS 7.5
 
-### Application Server
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ❌   |
 
-|         | Web Server |  linux/amd64  |  linux/arm64  |
-|---------|------------|:-------------:|:-------------:|
-| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.1 | Apache 2.4 |      🐳       |     🙅🏻      |
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.0    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.4    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.1    | Apache 2.4 |     ✅     |     ❌     |
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75)
+👉 **[Get CentOS 7.5 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75)**
 
-## CentOS 7.9
+---
 
-### Base
+### CentOS 7.9
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |      🐳       |
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
 
-### Application server
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.0    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.4    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.3    | Apache 2.4 |     ✅     |     ❌     |
 
-|         | Web Server |  linux/amd64  |  linux/arm64  |
-|---------|------------|:-------------:|:-------------:|
-| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.3 | Apache 2.4 |      🐳       |     🙅🏻      |
+👉 **[Get CentOS 7.9 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)**
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)
+---
 
-## CentOS 8.3
+### CentOS 8.3
 
-### Base
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |      🐳       |
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.2    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 8.1    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 8.0    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 7.4    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 7.2    | Apache 2.4 |     ✅     |     ✅     |
 
-### Application server
+👉 **[Get CentOS 8.3 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)**
 
-|         | Web Server |  linux/amd64  |  linux/arm64  |
-|---------|------------|:-------------:|:-------------:|
-| PHP 8.2 | Apache 2.4 |      🐳       |      🐳       |
-| PHP 8.1 | Apache 2.4 |      🐳       |      🐳       |
-| PHP 8.0 | Apache 2.4 |      🐳       |      🐳       |
-| PHP 7.4 | Apache 2.4 |      🐳       |      🐳       |
-| PHP 7.2 | Apache 2.4 |      🐳       |      🐳       |
+---
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)
+## ☁️ Amazon Linux Support
 
-## AmazonLinux 2
+### Amazon Linux 2
 
-### Base
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |      🐳       |
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.2    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 8.1    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 8.0    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.4    | Apache 2.4 |     ✅     |     ❌     |
+| PHP 7.2    | Apache 2.4 |     ✅     |     ❌     |
 
-### Application server
+> **Note:** Remi リポジトリの [CentOS 7](https://ftp.riken.jp/Linux/remi/enterprise/7/) 系に ARM 版ビルドはありません。
 
-|         | Web Server |  linux/amd64  |  linux/arm64  |
-|---------|------------|:-------------:|:-------------:|
-| PHP 8.2 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 8.1 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 8.0 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.4 | Apache 2.4 |      🐳       |     🙅🏻      |
-| PHP 7.2 | Apache 2.4 |      🐳       |     🙅🏻      |
+👉 **[Get Amazon Linux 2 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-amzn2)**
 
-※ Remi リポジトリの [CentOS 7](https://ftp.riken.jp/Linux/remi/enterprise/7/) 系に ARM 版ビルドはない。
+---
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-amzn2)
+### Amazon Linux 2023
 
-## AmazonLinux 2023
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
 
-### Base
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:-----------|:-----------|:----------:|:----------:|
+| PHP 8.2    | Apache 2.4 |     ✅     |     ✅     |
+| PHP 8.1    | Apache 2.4 |     ✅     |     ❌     |
 
-|  linux/amd64  |  linux/arm64  |
-|:-------------:|:-------------:|
-|      🐳       |      🐳       |
+> **Note:** PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
 
-### Application server
+👉 **[Get Amazon Linux 2023 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)**
 
+---
 
-|         | Web Server |  linux/amd64  |  linux/arm64  |
-|---------|------------|:-------------:|:-------------:|
-| PHP 8.2 | Apache 2.4 |      🐳       |      🐳       |
-| PHP 8.1 | Apache 2.4 |      🐳       |     🙅🏻      |
-
-※ PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
-
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)
-
-## DataBase
+## 🗄️ Database Support
 
 ### MySQL
 
-|     | linux/amd64 | linux/arm64 |
-|-----|:-----------:|:-----------:|
-| 8.0 |     🐳      |     🐳      |
-| 5.7 |     🐳      |    🙅🏻     |
-| 5.6 |     🐳      |    🙅🏻     |
+| Version | linux/amd64 | linux/arm64 |
+|:--------|:----------:|:----------:|
+| 8.0     |     ✅     |     ✅     |
+| 5.7     |     ✅     |     ❌     |
+| 5.6     |     ✅     |     ❌     |
 
-👉 [Get images](https://github.com/orgs/buddying-inc/packages/container/package/mysql)
+👉 **[Get MySQL Images](https://github.com/orgs/buddying-inc/packages/container/package/mysql)**
+
+---
+
+## 📝 Legend
+
+| Symbol | Meaning |
+|:------:|:--------|
+| ✅     | Available |
+| ❌     | Not Available |
