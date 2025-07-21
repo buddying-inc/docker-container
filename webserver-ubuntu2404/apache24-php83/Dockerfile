@@ -66,7 +66,7 @@ COPY webserver-ubuntu2404/apache24-php83/files/docker-entrypoint.sh /docker-entr
 # Create PHP log directory
 RUN mkdir -p /var/log/php \
     && chmod 777 -R /var/log/php \
-    && chown www-data:www-data /var/log/php \
+    && chown www-data:www-data /var/log/php
 
 # Set execute permission for entrypoint script
 RUN chmod +x /docker-entrypoint.sh
