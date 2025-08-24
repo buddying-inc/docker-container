@@ -49,6 +49,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Enable mod_rewrite module
+RUN a2enmod rewrite
+
 # Copy Apache custom configuration
 COPY webserver-ubuntu2404/apache24-php84/files/apache2/custom.conf /etc/apache2/conf-available/custom.conf
 
