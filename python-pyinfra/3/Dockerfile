@@ -1,6 +1,7 @@
 FROM python:3.13-slim
 
-RUN pip install 'pyinfra>=3,<4'
+RUN pip install 'pyinfra>=3,<4' \
+    && pip install passlib
 
 WORKDIR /workspace
 
