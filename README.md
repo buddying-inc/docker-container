@@ -179,6 +179,8 @@
   * [OpenSSL 1.1 (ARM-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.3/latest-64bit-arm-openssl1.1)
   * [OpenSSL 3.0 (ARM-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.3/latest-64bit-arm-openssl3)
 * PHP 8.4
+  * [OpenSSL 3.0 (x86-64-bit Amazon Linux 2023)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-x86-amzlinux-openssl3)
+  * [OpenSSL 3.0 (ARM-64-bit Amazon Linux 2023)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-arm-amzlinux-openssl3)
   * [OpenSSL 1.1 (x86-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-X86-openssl1.1)
   * [OpenSSL 3.0 (x86-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-X86-openssl3)
   * [OpenSSL 1.1 (ARM-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-arm-openssl1.1)
