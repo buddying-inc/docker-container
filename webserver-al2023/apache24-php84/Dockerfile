@@ -1,7 +1,6 @@
 FROM ghcr.io/buddying-inc/amazonlinux:2023
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer1
 
 # packages
 RUN dnf install -y \
