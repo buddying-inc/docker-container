@@ -223,10 +223,10 @@
 ### MySQL
 
 | Version | linux/amd64 | linux/arm64 |
-|:--------|:----------:|:----------:|
-| 8.0     |     ✅     |     ✅     |
-| 5.7     |     ✅     |     ❌     |
-| 5.6     |     ✅     |     ❌     |
+|:--------|:-----------:|:-----------:|
+| 8.0     |     ✅      |     ✅      |
+| 5.7     |     ✅      |     ❌      |
+| 5.6     |     ✅      |     ❌      |
 
 👉 **[Get MySQL Images](https://github.com/orgs/buddying-inc/packages/container/package/mysql)**
 
@@ -234,7 +234,7 @@
 
 ## 📝 Legend
 
-| Symbol | Meaning |
-|:------:|:--------|
-| ✅     | Available |
-| ❌     | Not Available |
+| Symbol | Meaning       |
+|:------:|:--------------|
+|   ✅   | Available     |
+|   ❌   | Not Available |
