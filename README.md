@@ -126,6 +126,18 @@
 
 ---
 
+### AlmaLinux 10
+
+#### Base Images
+| Architecture | Status |
+|:-------------|:------:|
+| linux/amd64  |   ✅   |
+| linux/arm64  |   ✅   |
+
+👉 **[Get AlmaLinux 10 Images](https://github.com/orgs/buddying-inc/packages/container/package/almalinux)**
+
+---
+
 ## ☁️ Amazon Linux Support
 
 ### Amazon Linux 2
