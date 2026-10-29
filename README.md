@@ -134,7 +134,12 @@
 | linux/amd64  |   ✅   |
 | linux/arm64  |   ✅   |
 
-👉 **[Get AlmaLinux 10 Images](https://github.com/orgs/buddying-inc/packages/container/package/almalinux)**
+#### Application Server
+| PHP Version | Web Server | linux/amd64 | linux/arm64 |
+|:------------|:-----------|:-----------:|:-----------:|
+| PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
+
+👉 **[Get AlmaLinux 10 Images](https://github.com/orgs/buddying-inc/packages/container/package/almalinux)** / **[Get AlmaLinux 10 Application Server Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-almalinux10)**
 
 ---
 
