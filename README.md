@@ -104,6 +104,7 @@
 #### Application Server
 | PHP Version | Web Server | linux/amd64 | linux/arm64 |
 |:------------|:-----------|:-----------:|:-----------:|
+| PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.2     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.1     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.0     | Apache 2.4 |     ✅      |     ✅      |
