@@ -35,9 +35,9 @@ RUN dnf install -y \
 #    && echo "extension=amazon-elasticache-cluster-client.so" >> /etc/php.d/50-elasticache.ini
 
 ## copy setting files
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php85/files/httpd/custom.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php85/files/php/99-custom.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-al2023/apache24-php85/files/docker-entrypoint.sh /
+COPY webserver-al2023/apache24-php85/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY webserver-al2023/apache24-php85/files/php/99-custom.ini /etc/php.d/
+COPY webserver-al2023/apache24-php85/files/docker-entrypoint.sh /
 
 ## directory, permission, ...
 RUN mkdir -p /var/log/php \

@@ -45,9 +45,9 @@ RUN dnf install -y \
     && dnf clean all
 
 # copy setting files
-COPY ${GITHUB_WORKSPACE}/webserver-almalinux9/apache24-php85/files/httpd/custom.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-almalinux9/apache24-php85/files/php/99-custom.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-almalinux9/apache24-php85/files/docker-entrypoint.sh /
+COPY webserver-almalinux9/apache24-php85/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY webserver-almalinux9/apache24-php85/files/php/99-custom.ini /etc/php.d/
+COPY webserver-almalinux9/apache24-php85/files/docker-entrypoint.sh /
 
 # directory, permission, ...
 RUN mkdir -p /var/log/php \

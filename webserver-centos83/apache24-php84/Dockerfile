@@ -45,9 +45,9 @@ RUN dnf install -y \
     && dnf clean all
 
 # copu setting files
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php84/files/httpd/custom.conf /etc/httpd/conf.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php84/files/php/99-custom.ini /etc/php.d/
-COPY ${GITHUB_WORKSPACE}/webserver-centos83/apache24-php84/files/docker-entrypoint.sh /
+COPY webserver-centos83/apache24-php84/files/httpd/custom.conf /etc/httpd/conf.d/
+COPY webserver-centos83/apache24-php84/files/php/99-custom.ini /etc/php.d/
+COPY webserver-centos83/apache24-php84/files/docker-entrypoint.sh /
 
 # directory, permission, ...
 RUN mkdir -p /var/log/php \
