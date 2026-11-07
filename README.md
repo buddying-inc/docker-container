@@ -14,6 +14,17 @@
 .github/workflows/[PACKAGE_NAME]-[TAG_NAME].yml
 ```
 
+### Deprecated
+
+ビルドを停止したイメージは、同じ構造のまま `.deprecated/` 配下に移動しています。
+
+```
+.deprecated/[PACKAGE_NAME]/[TAG_NAME]/Dockerfile
+.deprecated/.github/workflows/[PACKAGE_NAME]-[TAG_NAME].yml
+```
+
+再ビルドが必要な場合は、該当のディレクトリとワークフローを元の場所へ戻してください。
+
 ---
 
 ## 🐧 Linux OS Support
@@ -36,63 +47,6 @@
 
 ---
 
-### CentOS 6.8
-
-#### Base Images
-| Architecture | Status |
-|:-------------|:------:|
-| linux/amd64  |   ✅   |
-| linux/arm64  |   ❌   |
-
-#### Application Server
-| PHP Version           | Web Server | linux/amd64 | linux/arm64 |
-|:----------------------|:-----------|:-----------:|:-----------:|
-| PHP 7.0               | Apache 2.2 |     ✅      |     ❌      |
-| PHP 5.6               | Apache 2.2 |     ✅      |     ❌      |
-| PHP 5.6 with memcache | Apache 2.2 |     ✅      |     ❌      |
-
-👉 **[Get CentOS 6.8 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68)**
-
----
-
-### CentOS 7.5
-
-#### Base Images
-| Architecture | Status |
-|:-------------|:------:|
-| linux/amd64  |   ✅   |
-| linux/arm64  |   ❌   |
-
-#### Application Server
-| PHP Version | Web Server | linux/amd64 | linux/arm64 |
-|:------------|:-----------|:-----------:|:-----------:|
-| PHP 8.0     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.4     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.1     | Apache 2.4 |     ✅      |     ❌      |
-
-👉 **[Get CentOS 7.5 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75)**
-
----
-
-### CentOS 7.9
-
-#### Base Images
-| Architecture | Status |
-|:-------------|:------:|
-| linux/amd64  |   ✅   |
-| linux/arm64  |   ✅   |
-
-#### Application Server
-| PHP Version | Web Server | linux/amd64 | linux/arm64 |
-|:------------|:-----------|:-----------:|:-----------:|
-| PHP 8.0     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.4     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.3     | Apache 2.4 |     ✅      |     ❌      |
-
-👉 **[Get CentOS 7.9 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79)**
-
----
-
 ### CentOS 8.3
 
 #### Base Images
@@ -105,11 +59,6 @@
 | PHP Version | Web Server | linux/amd64 | linux/arm64 |
 |:------------|:-----------|:-----------:|:-----------:|
 | PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 8.2     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 8.1     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 8.0     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 7.4     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 7.2     | Apache 2.4 |     ✅      |     ✅      |
 
 👉 **[Get CentOS 8.3 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83)**
 
@@ -153,29 +102,6 @@
 
 ## ☁️ Amazon Linux Support
 
-### Amazon Linux 2
-
-#### Base Images
-| Architecture | Status |
-|:-------------|:------:|
-| linux/amd64  |   ✅   |
-| linux/arm64  |   ✅   |
-
-#### Application Server
-| PHP Version | Web Server | linux/amd64 | linux/arm64 |
-|:------------|:-----------|:-----------:|:-----------:|
-| PHP 8.2     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 8.1     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 8.0     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.4     | Apache 2.4 |     ✅      |     ❌      |
-| PHP 7.2     | Apache 2.4 |     ✅      |     ❌      |
-
-> **Note:** Remi リポジトリの [CentOS 7](https://ftp.riken.jp/Linux/remi/enterprise/7/) 系に ARM 版ビルドはありません。
-
-👉 **[Get Amazon Linux 2 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-amzn2)**
-
----
-
 ### Amazon Linux 2023
 
 #### Base Images
@@ -191,11 +117,7 @@
 |:------------|:-----------|:-----------:|:-----------:|
 | PHP 8.5     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 8.2     | Apache 2.4 |     ✅      |     ✅      |
-| PHP 8.1     | Apache 2.4 |     ✅      |     ❌      |
 
-> **Note:** PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
-> 
 > **Note:** PHP8.5 向けの `amazon-elasticache-cluster-client.so` は OpenSSL 3.0 対応版がないため、PHP8.5 には ElastiCache クライアントを組み込んでいません。
 
 👉 **[Get Amazon Linux 2023 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)**
@@ -240,10 +162,24 @@
 |:--------|:-----------:|:-----------:|
 | 8.4     |     ✅      |     ✅      |
 | 8.0     |     ✅      |     ✅      |
-| 5.7     |     ✅      |     ❌      |
-| 5.6     |     ✅      |     ❌      |
 
 👉 **[Get MySQL Images](https://github.com/orgs/buddying-inc/packages/container/package/mysql)**
+
+---
+
+## 📦 Deprecated
+
+ビルドを停止し、`.deprecated/` に移動したイメージです。GHCR に公開済みのイメージは、引き続き取得できます。
+
+| OS / 製品         | 対象バージョン                                                  | 取得先                                                                                                    |
+|:------------------|:----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|
+| CentOS 6.8        | PHP 7.0 / 5.6 / 5.6 with memcache (Apache 2.2)                  | [webserver-centos68](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos68) |
+| CentOS 7.5        | PHP 8.0 / 7.4 / 7.1 (Apache 2.4)                                | [webserver-centos75](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos75) |
+| CentOS 7.9        | PHP 8.0 / 7.4 / 7.3 (Apache 2.4)                                | [webserver-centos79](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos79) |
+| CentOS 8.3        | PHP 8.2 / 8.1 / 8.0 / 7.4 / 7.2 (Apache 2.4)                    | [webserver-centos83](https://github.com/orgs/buddying-inc/packages/container/package/webserver-centos83) |
+| Amazon Linux 2    | PHP 8.2 / 8.1 / 8.0 / 7.4 / 7.2 (Apache 2.4)                    | [webserver-amzn2](https://github.com/orgs/buddying-inc/packages/container/package/webserver-amzn2)       |
+| Amazon Linux 2023 | PHP 8.2 / 8.1 (Apache 2.4)                                      | [webserver-al2023](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)     |
+| MySQL             | 5.7 / 5.6                                                       | [mysql](https://github.com/orgs/buddying-inc/packages/container/package/mysql)                           |
 
 ---
 
