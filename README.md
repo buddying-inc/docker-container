@@ -126,6 +126,7 @@
 #### Application Server
 | PHP Version | Web Server | linux/amd64 | linux/arm64 |
 |:------------|:-----------|:-----------:|:-----------:|
+| PHP 8.5     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
 
 👉 **[Get AlmaLinux 9 Images](https://github.com/orgs/buddying-inc/packages/container/package/almalinux)** / **[Get AlmaLinux 9 Application Server Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-almalinux9)**
@@ -143,6 +144,7 @@
 #### Application Server
 | PHP Version | Web Server | linux/amd64 | linux/arm64 |
 |:------------|:-----------|:-----------:|:-----------:|
+| PHP 8.5     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
 
 👉 **[Get AlmaLinux 10 Images](https://github.com/orgs/buddying-inc/packages/container/package/almalinux)** / **[Get AlmaLinux 10 Application Server Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-almalinux10)**
@@ -187,11 +189,14 @@
 
 | PHP Version | Web Server | linux/amd64 | linux/arm64 |
 |:------------|:-----------|:-----------:|:-----------:|
+| PHP 8.5     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.4     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.2     | Apache 2.4 |     ✅      |     ✅      |
 | PHP 8.1     | Apache 2.4 |     ✅      |     ❌      |
 
 > **Note:** PHP8.1 向け `amazon-elasticache-cluster-client.so` がないため、PHP8.1 は ARM 版を用意していません。
+> 
+> **Note:** PHP8.5 向けの `amazon-elasticache-cluster-client.so` は OpenSSL 3.0 対応版がないため、PHP8.5 には ElastiCache クライアントを組み込んでいません。
 
 👉 **[Get Amazon Linux 2023 Images](https://github.com/orgs/buddying-inc/packages/container/package/webserver-al2023)**
 
@@ -221,6 +226,9 @@
   * [OpenSSL 3.0 (x86-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-X86-openssl3)
   * [OpenSSL 1.1 (ARM-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-arm-openssl1.1)
   * [OpenSSL 3.0 (ARM-64-bit Linux)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.4/latest-64bit-arm-openssl3)
+* PHP 8.5 ... 2026-11-07 OpenSSL3.0 対応版無し
+  * [OpenSSL 1.1 (x86-64-bit RHEL)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.5/latest-64bit-x86-rhel-openssl1.1)
+  * [OpenSSL 1.1 (ARM-64-bit RHEL)](https://elasticache-downloads.s3.amazonaws.com/ClusterClient/PHP-8.5/latest-64bit-arm-rhel-openssl1.1)
 
 ---
 
