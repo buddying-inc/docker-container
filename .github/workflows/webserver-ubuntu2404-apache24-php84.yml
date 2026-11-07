@@ -7,6 +7,9 @@ jobs:
   publish:
     name: Push Docker image to GitHub Container Registry
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PACKAGE_NAME: webserver-ubuntu2404
       VERSION_NAME: apache24-php84
@@ -25,7 +28,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
