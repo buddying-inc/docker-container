@@ -54,6 +54,7 @@ RUN mkdir -p /var/log/php \
     && chgrp -R apache /var/lib/php/opcache /var/lib/php/wsdlcache \
     && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
     && sed -i.dist 's/^;clear_env = no$/clear_env = no/' /etc/php-fpm.d/www.conf \
+    && sed -i 's/^session\.sid_length/;session.sid_length/; s/^session\.sid_bits_per_character/;session.sid_bits_per_character/' /etc/php.ini \
     && chmod 700 /docker-entrypoint.sh
 
 ## env, port
