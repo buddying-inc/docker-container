@@ -24,6 +24,11 @@ RUN dnf install -y \
            php8.4-soap \
            php8.4-xml \
            php8.4-zip \
+           php-pear \
+           gcc \
+           make \
+    && pecl install xdebug \
+    && echo "zend_extension=xdebug.so" > /etc/php.d/15-xdebug.ini \
     && dnf clean all
 
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html

@@ -24,6 +24,11 @@ RUN dnf install -y \
            php8.5-soap \
            php8.5-xml \
            php8.5-zip \
+           php-pear \
+           gcc \
+           make \
+    && pecl install xdebug \
+    && echo "zend_extension=xdebug.so" > /etc/php.d/15-xdebug.ini \
     && dnf clean all
 
 # 2026-11-07 OpenSSL3.0 対応版無し
