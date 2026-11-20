@@ -6,7 +6,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN dnf install -y \
         httpd \
         wget \
-        postfix \
         libzip  \
         libzip-devel \
         zip \
@@ -15,6 +14,7 @@ RUN dnf install -y \
            php8.4 \
            php8.4-common \
            php8.4-devel \
+           php8.4-fpm \
            php8.4-gd \
            php8.4-intl \
            php8.4-mbstring \
@@ -24,6 +24,11 @@ RUN dnf install -y \
            php8.4-soap \
            php8.4-xml \
            php8.4-zip \
+           php-pear \
+           gcc \
+           make \
+    && pecl install xdebug \
+    && echo "zend_extension=xdebug.so" > /etc/php.d/15-xdebug.ini \
     && dnf clean all
 
 # https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/mem-ug/Appendix.PHPAutoDiscoverySetup.Installing.html
@@ -44,10 +49,10 @@ RUN mkdir -p /var/log/php \
     && chmod 777 -R /var/lib/php/session \
     && usermod -u 1000 apache \
     && groupmod -g 1000 apache \
+    && chown -R apache /var/log/php-fpm \
+    && chgrp -R apache /var/lib/php/opcache /var/lib/php/wsdlcache \
     && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
-    && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
-    && sed -i.dist -e 's/^#LoadModule mpm_prefork_module/LoadModule mpm_prefork_module/g' \
-                   -e 's/^LoadModule mpm_event_module/#LoadModule mpm_event_module/g' /etc/httpd/conf.modules.d/00-mpm.conf \
+    && sed -i.dist 's/^;clear_env = no$/clear_env = no/' /etc/php-fpm.d/www.conf \
     && chmod 700 /docker-entrypoint.sh
 
 ## env, port

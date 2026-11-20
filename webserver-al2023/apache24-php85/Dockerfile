@@ -6,7 +6,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN dnf install -y \
         httpd \
         wget \
-        postfix \
         libzip  \
         libzip-devel \
         zip \
@@ -15,6 +14,7 @@ RUN dnf install -y \
            php8.5 \
            php8.5-common \
            php8.5-devel \
+           php8.5-fpm \
            php8.5-gd \
            php8.5-intl \
            php8.5-mbstring \
@@ -24,6 +24,11 @@ RUN dnf install -y \
            php8.5-soap \
            php8.5-xml \
            php8.5-zip \
+           php-pear \
+           gcc \
+           make \
+    && pecl install xdebug \
+    && echo "zend_extension=xdebug.so" > /etc/php.d/15-xdebug.ini \
     && dnf clean all
 
 # 2026-11-07 OpenSSL3.0 対応版無し
@@ -45,10 +50,10 @@ RUN mkdir -p /var/log/php \
     && chmod 777 -R /var/lib/php/session \
     && usermod -u 1000 apache \
     && groupmod -g 1000 apache \
+    && chown -R apache /var/log/php-fpm \
+    && chgrp -R apache /var/lib/php/opcache /var/lib/php/wsdlcache \
     && sed -i.dist 's,^#ServerName.*$,ServerName 127.0.0.1:80,g' /etc/httpd/conf/httpd.conf \
-    && sed -i.dist 's/^inet_interfaces = localhost$/inet_interfaces = all/g' /etc/postfix/main.cf \
-    && sed -i.dist -e 's/^#LoadModule mpm_prefork_module/LoadModule mpm_prefork_module/g' \
-                   -e 's/^LoadModule mpm_event_module/#LoadModule mpm_event_module/g' /etc/httpd/conf.modules.d/00-mpm.conf \
+    && sed -i.dist 's/^;clear_env = no$/clear_env = no/' /etc/php-fpm.d/www.conf \
     && chmod 700 /docker-entrypoint.sh
 
 ## env, port

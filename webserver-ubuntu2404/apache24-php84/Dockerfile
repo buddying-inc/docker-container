@@ -11,7 +11,6 @@ RUN apt-get update && apt-get upgrade -y \
         wget \
         zip \
         unzip \
-        postfix \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -26,7 +25,6 @@ RUN apt-get install -y \
         php8.4-cli \
         php8.4-fpm \
         php8.4-common \
-        libapache2-mod-php8.4 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -49,8 +47,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Enable mod_rewrite module
-RUN a2enmod rewrite
+# Enable mod_rewrite module and PHP-FPM
+RUN a2enmod rewrite proxy_fcgi setenvif \
+    && a2enconf php8.4-fpm \
+    && sed -i "s/^;clear_env = no\$/clear_env = no/" /etc/php/8.4/fpm/pool.d/www.conf
 
 # Copy Apache custom configuration
 COPY webserver-ubuntu2404/apache24-php84/files/apache2/custom.conf /etc/apache2/conf-available/custom.conf
@@ -59,7 +59,6 @@ COPY webserver-ubuntu2404/apache24-php84/files/apache2/custom.conf /etc/apache2/
 RUN a2enconf custom
 
 # Copy PHP custom configuration
-COPY webserver-ubuntu2404/apache24-php84/files/php/99-custom.ini /etc/php/8.4/apache2/conf.d/99-custom.ini
 COPY webserver-ubuntu2404/apache24-php84/files/php/99-custom.ini /etc/php/8.4/cli/conf.d/99-custom.ini
 COPY webserver-ubuntu2404/apache24-php84/files/php/99-custom.ini /etc/php/8.4/fpm/conf.d/99-custom.ini
 
