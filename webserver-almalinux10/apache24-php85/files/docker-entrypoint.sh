@@ -8,5 +8,6 @@ if [ "$xdebug" != 'on' ] && [ -e /etc/php.d/15-xdebug.ini ]; then
   mv /etc/php.d/15-xdebug.ini /etc/php.d/15-xdebug.ini.disable
 fi
 
-/usr/sbin/postfix start
+mkdir -p /run/php-fpm
+/usr/sbin/php-fpm -D
 /usr/sbin/httpd -DFOREGROUND

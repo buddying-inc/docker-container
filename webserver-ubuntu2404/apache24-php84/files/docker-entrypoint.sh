@@ -5,19 +5,6 @@ set -e
 
 echo "Starting Docker entrypoint script..."
 
-# Function to handle signals for graceful shutdown
-cleanup() {
-    echo "Received signal, shutting down services..."
-    # Stop postfix
-    if pgrep -x "master" > /dev/null; then
-        echo "Stopping postfix..."
-        postfix stop
-    fi
-    # Apache will be stopped by the signal
-    echo "Services stopped."
-    exit 0
-}
-
 # Function to control Xdebug
 configure_xdebug() {
     local xdebug=${PHP_XDEBUG:-off}
@@ -26,7 +13,7 @@ configure_xdebug() {
     echo "Configuring Xdebug: $xdebug"
 
     # List of PHP SAPI directories to check
-    local sapi_dirs=("apache2" "cli" "fpm")
+    local sapi_dirs=("cli" "fpm")
 
     for sapi in "${sapi_dirs[@]}"; do
         local conf_dir="/etc/php/8.4/${sapi}/conf.d"
@@ -67,24 +54,17 @@ configure_xdebug() {
     done
 }
 
-# Set up signal handlers for graceful shutdown
-trap cleanup SIGTERM SIGINT
-
 # Configure Xdebug based on environment variable
 configure_xdebug
-
-# Start postfix
-echo "Starting postfix..."
-service postfix start
-
-# Check if postfix started successfully
-if ! pgrep -x "master" > /dev/null; then
-    echo "Warning: Postfix may not have started properly"
-fi
 
 # Enable Apache modules if needed (optional)
 # a2enmod rewrite
 # a2enmod ssl
+
+# Start PHP-FPM
+echo "Starting PHP-FPM..."
+mkdir -p /run/php
+php-fpm8.4 -D
 
 # Start Apache in foreground
 echo "Starting Apache2 in foreground..."
