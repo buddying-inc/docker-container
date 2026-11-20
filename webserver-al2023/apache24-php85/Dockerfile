@@ -10,7 +10,7 @@ RUN dnf install -y \
         libzip-devel \
         zip \
         unzip \
-    && dnf install -y \
+    && dnf install -y --releasever=latest \
            php8.5 \
            php8.5-common \
            php8.5-devel \
